@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prenota la Tua Chiamata — Lifter House</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #090d16; --surface: #0f1521; --surface2: #1e2840;
+      --text: #f0f4fa; --text-sub: #c8d3e3; --muted: #8fa3bc;
+      --accent: #3d9fe8; --accent-hover: #2280c8; --accent-glow: rgba(61,159,232,0.18);
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.22);
+      --radius: 9999px;
+      --t-xs: 0.75rem; --t-sm: 0.875rem; --t-base: 1rem; --t-lg: 1.125rem;
+      --font-display: 'Poppins', system-ui, sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      background: var(--bg); color: var(--text); line-height: 1.75;
+      min-height: 100vh; display: flex; flex-direction: column;
+      font-optical-sizing: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .topbar {
+      background: var(--accent); text-align: center; padding: 0.55rem 1rem;
+      font-family: var(--font-body);
+      font-size: var(--t-sm); font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .logo-bar { text-align: center; padding: 1.5rem 1rem 0; }
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .logo-text span { color: var(--accent); }
+
+    /* ── Layout ── */
+    .booking-layout {
+      max-width: 960px; margin: 0 auto; flex: 1;
+      padding: 2.5rem 1.5rem 3rem;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 2rem; align-items: start;
+    }
+
+    /* ── Left: Info ── */
+    .booking-info {}
+    .booking-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--accent-glow);
+      border: 1px solid rgba(61,159,232,0.3);
+      border-radius: var(--radius);
+      padding: 0.3rem 0.9rem;
+      font-family: var(--font-body);
+      font-size: var(--t-xs); color: var(--accent);
+      font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .booking-info h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 800; line-height: 1.2;
+      margin-bottom: 0.75rem; letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .booking-info h1 span { color: var(--accent); }
+    .booking-info .intro {
+      font-family: var(--font-body);
+      font-size: var(--t-base); color: var(--text-sub);
+      margin-bottom: 1.5rem; line-height: 1.75;
+    }
+
+    /* Meta info call */
+    .call-meta {
+      display: grid; gap: 0.6rem; margin-bottom: 1.5rem;
+    }
+    .meta-item {
+      display: flex; align-items: center; gap: 0.65rem;
+      font-family: var(--font-body);
+      font-size: var(--t-base); color: var(--text-sub);
+    }
+    .meta-icon { font-size: 1rem; flex-shrink: 0; width: 20px; text-align: center; }
+    .meta-item strong { color: var(--text); }
+
+    /* Agenda */
+    .agenda {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .agenda-title {
+      font-family: var(--font-body);
+      font-size: var(--t-xs); font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.75rem;
+    }
+    .agenda-list { list-style: none; display: grid; gap: 0.5rem; }
+    .agenda-list li {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-family: var(--font-body);
+      font-size: var(--t-base); color: var(--text-sub);
+    }
+    .agenda-list li::before {
+      content: "→"; color: var(--accent);
+      font-weight: 700; flex-shrink: 0;
+    }
+
+    /* Trust badges */
+    .trust-badges {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.35rem 0.85rem;
+      font-family: var(--font-body);
+      font-size: var(--t-sm); color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    /* ── Right: Calendly ── */
+    .calendly-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      min-height: 680px;
+    }
+    .calendly-placeholder {
+      min-height: 680px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1rem; text-align: center; padding: 2rem;
+      color: var(--text-sub);
+    }
+    .calendly-placeholder .cal-icon { font-size: 2.5rem; }
+    .calendly-placeholder h3 {
+      font-family: var(--font-display);
+      font-size: var(--t-lg); font-weight: 800; color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .calendly-placeholder p { font-family: var(--font-body); font-size: var(--t-base); max-width: 340px; }
+    .calendly-placeholder code {
+      display: block;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.75rem 1rem;
+      font-size: var(--t-xs); color: var(--accent);
+      text-align: left; word-break: break-all;
+      margin-top: 0.5rem; line-height: 1.6;
+    }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center; padding: 1.5rem;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: var(--t-base); font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-phones { font-family: var(--font-body); font-size: var(--t-sm); color: var(--muted); margin-bottom: 0.4rem; }
+    .footer-phones a { color: var(--muted); text-decoration: none; }
+    .copyright { font-family: var(--font-body); font-size: var(--t-xs); color: rgba(255,255,255,0.48); }
+
+    @media (max-width: 700px) {
+      .booking-layout { grid-template-columns: 1fr; padding: 1.5rem 1rem 2rem; }
+      .calendly-wrap { min-height: 600px; }
+      .calendly-placeholder { min-height: 600px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">Sei qualificato ✓ — Scegli il tuo orario</div>
+
+  <div class="logo-bar">
+    <span class="logo-text">LIFTER <span>HOUSE</span></span>
+  </div>
+
+  <div class="booking-layout">
+
+    <!-- Left: Info -->
+    <div class="booking-info">
+      <div class="booking-badge">✓ Qualificato</div>
+      <h1>Prenota la tua chiamata<br>con <span>Gabriele Lombardo</span></h1>
+      <p class="intro">
+        Scegli il giorno e l'orario che preferisci. La chiamata è gratuita e dura 30 minuti.
+        Alla fine avrai un piano chiaro su cosa fare per aumentare il tuo fatturato.
+      </p>
+
+      <!-- Meta info -->
+      <div class="call-meta">
+        <div class="meta-item">
+          <span class="meta-icon">🕐</span>
+          <span><strong>30 minuti</strong> · Chiamata strategica gratuita</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">💻</span>
+          <span><strong>Zoom</strong> o Google Meet · link inviato via email</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">📅</span>
+          <span>Disponibilità <strong>Lun–Ven</strong>, 9:00–18:00</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">💶</span>
+          <span><strong>Gratuita</strong> · Nessun impegno economico</span>
+        </div>
+      </div>
+
+      <!-- Agenda -->
+      <div class="agenda">
+        <p class="agenda-title">Cosa facciamo durante la chiamata</p>
+        <ul class="agenda-list">
+          <li>Analizziamo i tuoi 4 numeri attuali</li>
+          <li>Identifichiamo il collo di bottiglia principale</li>
+          <li>Ti mostro come si muovono i 4 numeri nel tuo caso specifico</li>
+          <li>Decidi tu se ha senso lavorare insieme — zero pressioni</li>
+        </ul>
+      </div>
+
+      <!-- Trust badges -->
+      <div class="trust-badges">
+        <span class="badge">🔒 100% Riservata</span>
+        <span class="badge">🚫 Nessuna vendita aggressiva</span>
+        <span class="badge">✓ Puoi cancellare</span>
+      </div>
+    </div>
+
+    <!-- Right: Calendly embed -->
+    <div class="calendly-wrap">
+
+      <!--
+        ══════════════════════════════════════════════════════
+        CALENDLY INLINE EMBED
+        Sostituisci YOUR-LINK con il tuo link Calendly:
+
+        1. Vai su calendly.com → Crea un evento da 30 min
+        2. Copia il link (es. calendly.com/gabriele-lifterhouse/30min)
+        3. Sostituisci data-url qui sotto
+        4. Decommenta il blocco e rimuovi il placeholder
+        ══════════════════════════════════════════════════════
+
+        <div class="calendly-inline-widget"
+             data-url="https://calendly.com/YOUR-LINK?background_color=0f1521&text_color=ffffff&primary_color=1d7fd4"
+             style="min-width:320px;height:680px;">
+        </div>
+        <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      -->
+
+      <!-- PLACEHOLDER — rimuovi quando integri Calendly -->
+      <div class="calendly-placeholder">
+        <div class="cal-icon">📅</div>
+        <div>
+          <h3>Calendly andrà qui</h3>
+          <p>Decommenta il blocco nel codice HTML e sostituisci YOUR-LINK con il tuo URL Calendly.</p>
+          <code>
+            data-url="https://calendly.com/<strong>TUO-LINK</strong>"<br>
+            ?background_color=0f0f0f<br>
+            &text_color=ffffff<br>
+            &primary_color=a90707
+          </code>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <p class="footer-logo">LIFTER <span>HOUSE</span></p>
+    <p class="footer-phones">
+      Moncalvo <a href="tel:+393272011947">+39 327 201 1947</a> &nbsp;·&nbsp;
+      Novara <a href="tel:+393314033805">+39 331 403 3805</a> &nbsp;/&nbsp;
+      <a href="tel:+393342084073">+39 334 208 4073</a> &nbsp;·&nbsp;
+      Casale <a href="tel:+393383327467">+39 338 332 7467</a>
+    </p>
+    <p class="copyright">Copyright 2025 – Lifter House – Tutti i diritti riservati</p>
+  </footer>
+
+</body>
+</html>

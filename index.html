@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lifter House — I 4 Numeri che Trasformano la Carriera da PT</title>
+  <meta name="description" content="Scopri i 4 numeri che trasformano la tua professione da PT da lavoro precario a business stabile. Senza marketing, senza social, senza funnel.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:           #090d16;
+      --surface:      #0f1521;
+      --surface2:     #1e2840;
+      --text:         #f0f4fa;
+      --text-sub:     #c8d3e3;
+      --muted:        #8fa3bc;
+      --accent:       #3d9fe8;
+      --accent-hover: #2280c8;
+      --accent-glow:  rgba(61,159,232,0.18);
+      --border:       rgba(255,255,255,0.12);
+      --border-strong:rgba(255,255,255,0.22);
+      --radius:       9999px;
+
+      /* ── Scala tipografica (5 taglie, non 12) ── */
+      --t-xs:   0.75rem;    /* 12px — badge, copyright, privacy */
+      --t-sm:   0.875rem;   /* 14px — label uppercase, caption */
+      --t-base: 1rem;       /* 16px — corpo principale */
+      --t-lg:   1.125rem;   /* 18px — testo lead, sub-heading */
+      --t-xl:   1.375rem;   /* 22px — h3, form heading */
+
+      /* ── Font family ── */
+      --font-display: 'Poppins', system-ui, sans-serif;   /* titoli */
+      --font-body:    'DM Sans', system-ui, sans-serif;   /* tutto il resto */
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-optical-sizing: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Top Bar ── */
+    .topbar {
+      background: var(--accent);
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-family: var(--font-body);
+      font-size: var(--t-sm);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Logo ── */
+    .logo-bar {
+      text-align: center;
+      padding: 1.75rem 1rem 0;
+    }
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      gap: 0.1rem;
+    }
+    .logo-text .logo-main { color: var(--text); }
+    .logo-text .logo-sub {
+      color: var(--accent);
+      font-family: var(--font-body);
+      font-size: var(--t-xs);
+      letter-spacing: 0.18em;
+      font-weight: 600;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+    .hero .tag {
+      display: inline-block;
+      border: 1px solid rgba(29,127,212,0.45);
+      color: var(--accent);
+      font-family: var(--font-body);
+      font-size: var(--t-xs);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5.5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 .highlight { color: var(--accent); }
+    .no-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1.75rem;
+    }
+    .no-item {
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      color: var(--text-sub);
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    /* ── Video Frame ── */
+    .video-frame-wrap {
+      max-width: 760px;
+      margin: 2rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .video-frame {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: var(--surface);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(29,127,212,0.2);
+      box-shadow: 0 0 60px rgba(29,127,212,0.07);
+    }
+    .video-frame video,
+    .video-frame iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    .video-placeholder {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--muted);
+      background: var(--surface);
+    }
+    .play-circle {
+      width: 72px; height: 72px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px rgba(29,127,212,0.4);
+      font-size: 1.5rem;
+      padding-left: 4px;
+    }
+    .video-placeholder p { font-size: 0.85rem; }
+    .video-placeholder small { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+
+    /* ── CTA ── */
+    .cta-wrap {
+      text-align: center;
+      padding: 2rem 1.5rem 1rem;
+    }
+    .btn-cta {
+      display: inline-block;
+      padding: 1rem 2.75rem;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-cta:hover {
+      background: var(--accent-hover);
+      transform: scale(1.03);
+    }
+
+    /* ── Divider ── */
+    .divider {
+      max-width: 720px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Sections ── */
+    .section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+    .section-label {
+      font-family: var(--font-body);
+      font-size: var(--t-sm);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.005em;
+      color: var(--text);
+    }
+
+    /* ── Copy block ── */
+    .copy-block p {
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+      line-height: 1.8;
+    }
+    .copy-block p strong { color: var(--text); }
+    .copy-block .emphasis {
+      font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 1.1rem;
+    }
+    .copy-block .quote-big {
+      border-left: 3px solid var(--accent);
+      padding-left: 1.25rem;
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: var(--text);
+      font-style: italic;
+      margin: 1.5rem 0;
+      line-height: 1.6;
+    }
+
+    /* ── Authority / Chi è Gabriele ── */
+    .authority-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+    .authority-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--surface2);
+      border: 2px solid rgba(61,159,232,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    .authority-text .name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--t-lg);
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .authority-text .title {
+      font-family: var(--font-body);
+      font-size: var(--t-sm);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .authority-text p {
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      color: var(--text-sub);
+      line-height: 1.75;
+    }
+
+    /* ── Cosa Scoprirai ── */
+    .discover-grid {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 0.5rem;
+    }
+    .discover-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.1rem 1.25rem;
+    }
+    .discover-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent-glow);
+      border: 1px solid rgba(61,159,232,0.4);
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--t-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .discover-text {
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      color: var(--text-sub);
+      line-height: 1.8;
+      padding-top: 0.2rem;
+    }
+    .discover-text strong { color: var(--text); font-weight: 600; }
+
+    /* ── Testimonials ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+    .testimonial-stars {
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .testimonial-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--surface2);
+      border: 1px solid rgba(29,127,212,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .testimonial-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+    }
+    .testimonial-role {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* ── Testimonials Videos ── */
+    .testimonials-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .testimonials-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .testimonials-sub {
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      color: var(--text-sub);
+      margin-bottom: 2rem;
+    }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .video-item { text-align: left; }
+    .video-item--last {
+      grid-column: 1 / -1;
+      max-width: calc(50% - 0.625rem);
+      margin: 0 auto;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    .video-thumb { cursor: pointer; }
+    .video-thumb img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: rgba(169,7,7,0.9);
+      border: none; color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      padding-left: 4px;
+    }
+    .video-thumb:hover .play-btn {
+      background: var(--accent);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    .video-name {
+      font-family: var(--font-body);
+      font-size: var(--t-sm);
+      color: var(--muted);
+      margin-top: 0.5rem;
+      text-align: center;
+      font-weight: 500;
+    }
+    .video-job {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      text-align: center;
+      font-weight: 400;
+    }
+    .btn-to-form {
+      display: inline-block;
+      padding: 1rem 2.75rem;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 20px rgba(61,159,232,0.35);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-to-form:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+    /* ── Form ── */
+    .form-section {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+    .form-eyebrow {
+      display: inline-block;
+      background: var(--accent-glow);
+      border: 1px solid rgba(61,159,232,0.35);
+      color: var(--accent);
+      font-family: var(--font-body);
+      font-size: var(--t-xs);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+    }
+    .form-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    .form-section .form-sub {
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      color: var(--text-sub);
+      margin-bottom: 1.75rem;
+      line-height: 1.65;
+    }
+    .form-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 20px;
+      padding: 2rem 1.75rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+    }
+    .optin-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+    /* Field con label visibile */
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      text-align: left;
+    }
+    .field-group label {
+      font-family: var(--font-body);
+      font-size: var(--t-sm);
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .optin-form input {
+      width: 100%;
+      padding: 0.9rem 1.15rem;
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .optin-form input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(61,159,232,0.22);
+    }
+    .optin-form input::placeholder { color: var(--muted); }
+    .optin-form button {
+      width: 100%;
+      padding: 1.05rem 1rem;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-top: 0.25rem;
+      box-shadow: 0 4px 20px rgba(61,159,232,0.35);
+    }
+    .optin-form button:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px rgba(61,159,232,0.45);
+    }
+    .optin-form button:active { transform: translateY(0); }
+    .privacy-note {
+      font-family: var(--font-body);
+      font-size: var(--t-sm);
+      color: var(--text-sub);
+      margin-top: 1rem;
+    }
+
+    /* ── 4 Numeri teaser ── */
+    .quattro-card {
+      background: var(--surface);
+      border: 1px solid rgba(29,127,212,0.25);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin: 0 0 2rem;
+    }
+    .quattro-card .num-big {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 5.5rem);
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .quattro-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+    .quattro-card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 460px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 1.75rem 1.5rem;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: var(--t-base);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-phones {
+      font-family: var(--font-body);
+      font-size: var(--t-sm);
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .footer-phones a { color: var(--muted); text-decoration: none; }
+    .footer-phones a:hover { color: var(--text); }
+    .copyright {
+      font-family: var(--font-body);
+      font-size: var(--t-xs);
+      color: rgba(255,255,255,0.48);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .hero { padding: 1.5rem 1rem 1rem; }
+      .hero h1 { font-size: clamp(1.65rem, 8vw, 2rem); line-height: 1.2; }
+      .section { padding: 2.5rem 1rem; }
+      .authority-card { flex-direction: column; }
+      .cta-wrap { padding: 1.25rem 1rem; }
+      .btn-cta { display: block; width: 100%; text-align: center; padding: 1rem 1.5rem; }
+      .video-frame-wrap { padding: 0 1rem; }
+      .video-frame { padding-bottom: 44%; }
+      .form-section { padding: 1rem 1rem 2.5rem; }
+      .form-card { padding: 1.5rem 1.25rem; }
+      .videos-grid { grid-template-columns: 1fr; }
+      .video-item--last { grid-column: auto; max-width: 100%; margin: 0; }
+      .testimonials-section { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">Per Trainer Full Time</div>
+
+  <!-- Logo -->
+  <div class="logo-bar">
+    <span class="logo-text">
+      <span class="logo-main">LIFTER HOUSE</span>
+      <span class="logo-sub">Business</span>
+    </span>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>
+      I 4 numeri che ti danno il <span class="highlight">controllo</span><br>
+      sulla tua professione da PT<br>
+      e la trasformano da lavoro precario<br>
+      a <span class="highlight">business stabile</span>.
+    </h1>
+    <div class="no-list">
+      <span class="no-item">✗ Senza diventare un imprenditore</span>
+      <span class="no-item">✗ Senza diventare un influencer</span>
+      <span class="no-item">✗ Senza spendere migliaia di euro in marketing</span>
+    </div>
+  </section>
+
+  <!-- Video Frame teaser -->
+  <div class="video-frame-wrap">
+    <div class="video-frame">
+      <!--
+        ══════════════════════════════════════════════════════════
+        EMBED VIDEO TEASER — Sostituisci con il tuo player:
+
+        ① Wistia:
+           <script src="https://fast.wistia.com/embed/medias/ID.jsonp" async></script>
+           <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+           <div class="wistia_embed wistia_async_ID" style="height:100%;width:100%">&nbsp;</div>
+
+        ② Vimeo:
+           <iframe src="https://player.vimeo.com/video/ID?autoplay=1&muted=1"
+                   allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+        ③ MP4 locale:
+           <video src="teaser.mp4" poster="thumb.jpg" autoplay muted playsinline controls></video>
+        ══════════════════════════════════════════════════════════
+      -->
+      <div class="video-placeholder">
+        <img src="Thumbnail.png" alt="Anteprima video" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;display:block;">
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA #1 -->
+  <div class="cta-wrap">
+    <a href="#form" class="btn-cta">Accedi gratuitamente →</a>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CHI È GABRIELE -->
+  <section class="section">
+    <p class="section-label">Chi siamo</p>
+    <h2>Due persone che hanno vissuto il mondo del fitness da ogni ruolo possibile — da trainer in sala a direttore di centro.</h2>
+
+    <div class="authority-card">
+      <div class="authority-photo">👤</div>
+      <div class="authority-text">
+        <p class="name">Gabriele Lombardo</p>
+        <p class="title">Ex Socio & Amministratore · Catena Fitness Nazionale</p>
+        <p>
+          Ha gestito dall'interno una delle catene fitness più grandi d'Italia.
+          Contratti, rinnovi, conversioni, abbandoni: conosce esattamente dove i trainer perdono soldi senza accorgersene.
+        </p>
+      </div>
+    </div>
+
+    <div class="authority-card" style="margin-top:1.25rem;">
+      <div class="authority-photo">👤</div>
+      <div class="authority-text">
+        <p class="name">Giacomo Melotti</p>
+        <p class="title">Coach Nazionale & Fondatore Lifter House</p>
+        <p>
+          Ha aperto Lifter House da zero — niente ads, niente funnel, niente personal brand.
+          Solo il controllo preciso dei numeri giusti. È passato dall'allenare in palestra ad avere un centro suo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- COSA SCOPRIRAI -->
+  <section class="section">
+    <p class="section-label">Cosa Scoprirai</p>
+    <h2>In questa guida gratuita scoprirai:</h2>
+
+    <div class="discover-grid">
+      <div class="discover-item">
+        <div class="discover-num">1</div>
+        <p class="discover-text">
+          <strong>I 4 numeri che ogni trainer dovrebbe conoscere</strong>, che quasi nessuno guarda
+        </p>
+      </div>
+      <div class="discover-item">
+        <div class="discover-num">2</div>
+        <p class="discover-text">
+          Perché <strong>il marketing è la soluzione sbagliata</strong> se vuoi una carriera stabile come personal trainer o coach
+        </p>
+      </div>
+      <div class="discover-item">
+        <div class="discover-num">3</div>
+        <p class="discover-text">
+          <strong>L'errore che fa perdere soldi</strong> anche ai trainer più bravi (e come correggerlo in pochi giorni)
+        </p>
+      </div>
+      <div class="discover-item">
+        <div class="discover-num">4</div>
+        <p class="discover-text">
+          Come costruire un <strong>fatturato prevedibile</strong> lavorando offline, senza social e senza funnel
+        </p>
+      </div>
+    </div>
+    <a href="#form" class="btn-to-form" style="margin-top:2rem;">Voglio scoprire i 4 numeri →</a>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <p class="form-eyebrow">Risultati reali</p>
+    <h2 class="testimonials-title">Cosa dicono i trainer che hanno già visto il video</h2>
+    <p class="testimonials-sub">Persone normali, che lavoravano come te — e che hanno cambiato qualcosa.</p>
+    <div class="videos-grid">
+      <div class="video-item">
+        <div class="video-embed video-thumb" data-id="lWbSKa35wNk">
+          <img src="https://img.youtube.com/vi/lWbSKa35wNk/hqdefault.jpg" alt="Testimonianza Andrea Buttà">
+          <button class="play-btn" aria-label="Riproduci video">&#9654;</button>
+        </div>
+        <p class="video-name">Andrea Buttà</p>
+        <p class="video-job">Calisthenics e Streetlifting</p>
+      </div>
+      <div class="video-item">
+        <div class="video-embed video-thumb" data-id="-uue1dVg-qw">
+          <img src="https://img.youtube.com/vi/-uue1dVg-qw/hqdefault.jpg" alt="Testimonianza Mirko Nutricato">
+          <button class="play-btn" aria-label="Riproduci video">&#9654;</button>
+        </div>
+        <p class="video-name">Mirko Nutricato</p>
+        <p class="video-job">Powerlifting e Streetlifting a livello agonistico</p>
+      </div>
+      <div class="video-item">
+        <div class="video-embed video-thumb" data-id="GgCsfNa7OwQ">
+          <img src="https://img.youtube.com/vi/GgCsfNa7OwQ/hqdefault.jpg" alt="Testimonianza Alessio Miravalle">
+          <button class="play-btn" aria-label="Riproduci video">&#9654;</button>
+        </div>
+        <p class="video-name">Alessio Miravalle</p>
+        <p class="video-job">PT, Powerlifting e Natural Bodybuilding</p>
+      </div>
+      <div class="video-item">
+        <div class="video-embed video-thumb" data-id="ZkyjKpJQx2s">
+          <img src="https://img.youtube.com/vi/ZkyjKpJQx2s/hqdefault.jpg" alt="Testimonianza Davide Feltrin">
+          <button class="play-btn" aria-label="Riproduci video">&#9654;</button>
+        </div>
+        <p class="video-name">Davide Feltrin</p>
+        <p class="video-job">Coach di Calisthenics Skills</p>
+      </div>
+    </div>
+    <a href="#form" class="btn-to-form">Voglio scoprire i 4 numeri →</a>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FORM OPT-IN -->
+  <section class="form-section" id="form">
+    <p class="form-eyebrow">Accesso gratuito</p>
+    <h2>Accedi al video e scopri i 4 numeri che controllano il business di ogni PT</h2>
+    <p class="form-sub">Inserisci i tuoi dati per ricevere il link istantaneamente.</p>
+
+    <div class="form-card">
+      <!--
+        ══════════════════════════════════════════════════
+        OPZIONE A — ConvertKit embed form
+        OPZIONE B — Systeme.io: usa il loro form embed qui
+        OPZIONE C — Form nativo con redirect (default attivo sotto)
+        ══════════════════════════════════════════════════
+      -->
+      <form class="optin-form" id="optin-form">
+        <div class="field-group">
+          <label for="f-nome">Il tuo nome</label>
+          <input type="text" id="f-nome" name="nome" placeholder="es. Marco" required>
+        </div>
+        <div class="field-group">
+          <label for="f-email">La tua email</label>
+          <input type="email" id="f-email" name="email" placeholder="es. marco@gmail.com" required>
+        </div>
+        <div class="field-group">
+          <label for="f-tel">Il tuo telefono</label>
+          <input type="tel" id="f-tel" name="telefono" placeholder="es. 333 1234567" required>
+        </div>
+        <button type="submit" id="optin-btn">Voglio scoprire i 4 numeri →</button>
+      </form>
+      <script>
+        document.getElementById('optin-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          var btn = document.getElementById('optin-btn');
+          btn.disabled = true;
+          btn.textContent = 'Caricamento...';
+          var payload = {
+            nome: document.getElementById('f-nome').value,
+            email: document.getElementById('f-email').value,
+            telefono: document.getElementById('f-tel').value
+          };
+          fetch('https://hook.eu2.make.com/3l0r8xpqkx5e6vvd87mtvmsnmgsmekqq', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+          .then(function() { window.location.href = 'vsl.html'; })
+          .catch(function() { window.location.href = 'vsl.html'; });
+        });
+      </script>
+      <p class="privacy-note">🔒 Puoi cancellarti in qualsiasi momento.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-logo">LIFTER <span>HOUSE</span></p>
+    <p class="copyright">Copyright 2025 – Lifter House – Tutti i diritti riservati</p>
+    <p class="copyright" style="margin-top:0.5rem; max-width:600px; margin-left:auto; margin-right:auto;">
+      Questo sito non fa parte di Facebook o Facebook Inc. Inoltre, questo sito non è in alcun modo approvato da Facebook. Facebook è un marchio registrato di Meta Platforms, Inc.
+    </p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.video-thumb').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var id = el.dataset.id;
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+        iframe.allow = 'autoplay; encrypted-media';
+        iframe.allowFullscreen = true;
+        iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
+        el.innerHTML = '';
+        el.appendChild(iframe);
+        el.classList.remove('video-thumb');
+      });
+    });
+  </script>
+</body>
+</html>

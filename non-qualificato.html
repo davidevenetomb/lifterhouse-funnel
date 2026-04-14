@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grazie — Lifter House</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #090d16; --surface: #0f1521; --surface2: #1e2840;
+      --text: #f0f4fa; --text-sub: #c8d3e3; --muted: #8fa3bc;
+      --accent: #3d9fe8; --accent-hover: #2280c8; --accent-glow: rgba(61,159,232,0.18);
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.22);
+      --radius: 9999px;
+      --t-xs: 0.75rem; --t-sm: 0.875rem; --t-base: 1rem; --t-lg: 1.125rem;
+      --font-display: 'Poppins', system-ui, sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      background: var(--bg); color: var(--text); line-height: 1.75;
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center;
+      font-optical-sizing: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .logo-bar { text-align: center; padding: 2rem 1rem 0; }
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .logo-text span { color: var(--accent); }
+
+    .card {
+      max-width: 580px; width: 100%;
+      margin: 3rem auto; padding: 0 1.5rem;
+      text-align: center; flex: 1;
+    }
+    .icon { font-size: 2.5rem; margin-bottom: 1.25rem; }
+    .card h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 800; margin-bottom: 0.75rem;
+      letter-spacing: -0.01em; color: var(--text);
+    }
+    .card p {
+      font-family: var(--font-body);
+      font-size: var(--t-base); color: var(--text-sub);
+      max-width: 460px; margin: 0 auto 1rem; line-height: 1.75;
+    }
+    .card p strong { color: var(--text); font-weight: 600; }
+
+    .info-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem;
+      margin: 1.5rem 0; text-align: left;
+    }
+    .info-box p { font-family: var(--font-body); font-size: var(--t-base); color: var(--text-sub); margin-bottom: 0; }
+    .info-box p strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 0.25rem; }
+
+    .btn-back {
+      display: inline-block;
+      padding: 0.9rem 2.25rem;
+      background: var(--surface2); color: var(--text);
+      border: 1px solid var(--border);
+      font-family: var(--font-body);
+      font-size: var(--t-base); font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      text-decoration: none; border-radius: var(--radius);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-back:hover { background: var(--surface); border-color: var(--border-strong); }
+
+    footer {
+      width: 100%;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center; padding: 1.5rem; margin-top: auto;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: var(--t-base); font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-phones { font-family: var(--font-body); font-size: var(--t-sm); color: var(--muted); margin-bottom: 0.4rem; }
+    .footer-phones a { color: var(--muted); text-decoration: none; }
+    .copyright { font-family: var(--font-body); font-size: var(--t-xs); color: rgba(255,255,255,0.48); }
+  </style>
+</head>
+<body>
+
+  <div class="logo-bar">
+    <span class="logo-text">LIFTER <span>HOUSE</span></span>
+  </div>
+
+  <div class="card">
+    <div class="icon">🙏</div>
+    <h1>Grazie per aver risposto alle domande.</h1>
+    <p>
+      In questo momento la chiamata strategica con Gabriele è riservata a chi è pronto a
+      fare un passo concreto verso la crescita del proprio business.
+    </p>
+    <p>
+      <strong>Non è la fine.</strong> Continua a seguire i contenuti di Lifter House:
+      spesso le persone che non si sentono pronte oggi, dopo qualche settimana tornano
+      con una chiarezza diversa — e ottengono risultati straordinari.
+    </p>
+
+    <div class="info-box">
+      <p>
+        <strong>Vuoi comunque parlare con noi?</strong>
+        Scrivici o chiamaci direttamente — saremo felici di rispondere alle tue domande
+        senza impegno.
+      </p>
+    </div>
+
+    <a href="index.html" class="btn-back">← Torna alla home</a>
+  </div>
+
+  <footer>
+    <p class="footer-logo">LIFTER <span>HOUSE</span></p>
+    <p class="footer-phones">
+      Moncalvo <a href="tel:+393272011947">+39 327 201 1947</a> &nbsp;·&nbsp;
+      Novara <a href="tel:+393314033805">+39 331 403 3805</a> &nbsp;/&nbsp;
+      <a href="tel:+393342084073">+39 334 208 4073</a> &nbsp;·&nbsp;
+      Casale <a href="tel:+393383327467">+39 338 332 7467</a>
+    </p>
+    <p class="copyright">Copyright 2025 – Lifter House – Tutti i diritti riservati</p>
+  </footer>
+
+</body>
+</html>

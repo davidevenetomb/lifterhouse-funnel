@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidatura Business Checkup — Lifter House</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:           #090d16;
+      --surface:      #0f1521;
+      --surface2:     #1e2840;
+      --text:         #f0f4fa;
+      --text-sub:     #c8d3e3;
+      --muted:        #8fa3bc;
+      --accent:       #3d9fe8;
+      --accent-hover: #2280c8;
+      --border:       rgba(255,255,255,0.12);
+      --border-strong:rgba(255,255,255,0.22);
+      --radius:       9999px;
+      --font-display: 'Poppins', system-ui, sans-serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      --t-xs:   0.75rem;
+      --t-sm:   0.875rem;
+      --t-base: 1rem;
+      --t-lg:   1.125rem;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+    }
+
+    /* ── Topbar ── */
+    .topbar {
+      background: var(--accent);
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-family: var(--font-body);
+      font-size: var(--t-sm);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Logo ── */
+    .logo-bar {
+      text-align: center;
+      padding: 1.5rem 1rem 0;
+    }
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      gap: 0.1rem;
+    }
+    .logo-text .logo-main { color: var(--text); }
+    .logo-text .logo-sub {
+      color: var(--accent);
+      font-family: var(--font-body);
+      font-size: var(--t-xs);
+      letter-spacing: 0.18em;
+      font-weight: 600;
+    }
+
+    /* ── Page header ── */
+    .page-header {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 0;
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: var(--t-sm);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 4vw, 1.75rem);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+    .page-header p {
+      font-size: var(--t-sm);
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── Main container ── */
+    .quiz-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ── Progress ── */
+    .progress-section {
+      margin-bottom: 2rem;
+    }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .progress-label {
+      font-size: var(--t-sm);
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .progress-pct {
+      font-size: var(--t-sm);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .progress-track {
+      height: 4px;
+      background: var(--surface2);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 9999px;
+      width: 0%;
+      transition: width 0.35s ease;
+    }
+
+    /* ── Step card ── */
+    .step {
+      display: none;
+      animation: stepIn 0.22s ease both;
+    }
+    .step.active { display: block; }
+
+    @keyframes stepIn {
+      from { opacity: 0; transform: translateX(12px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .question-label {
+      font-family: var(--font-display);
+      font-size: clamp(1.05rem, 3vw, 1.25rem);
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+    .question-hint {
+      font-size: var(--t-sm);
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Option cards ── */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .option-card {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.9rem 1.1rem;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .option-card:hover {
+      border-color: var(--border-strong);
+      background: var(--surface2);
+    }
+    .option-card.selected {
+      border-color: var(--accent);
+      background: rgba(61,159,232,0.08);
+    }
+    .option-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid var(--border-strong);
+      flex-shrink: 0;
+      transition: border-color 0.15s, background 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .option-card.selected .option-dot {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+    .option-dot::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .option-card.selected .option-dot::after { opacity: 1; }
+    .option-text {
+      font-size: var(--t-base);
+      color: var(--text-sub);
+      line-height: 1.4;
+    }
+    .option-card.selected .option-text { color: var(--text); }
+
+    /* ── Open inputs ── */
+    .open-input-wrap {
+      margin-bottom: 1.5rem;
+    }
+    .open-input {
+      width: 100%;
+      padding: 0.9rem 1.1rem;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -moz-appearance: textfield;
+    }
+    .open-input::-webkit-outer-spin-button,
+    .open-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .open-input::placeholder { color: var(--muted); }
+    .open-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(61,159,232,0.18);
+    }
+    .input-prefix {
+      position: relative;
+    }
+    .input-prefix .prefix-symbol {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: var(--t-base);
+      pointer-events: none;
+    }
+    .input-prefix .open-input {
+      padding-left: 2rem;
+    }
+
+    /* ── Contact fields ── */
+    .contact-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .field-group label {
+      font-size: var(--t-sm);
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── Error msg ── */
+    .error-msg {
+      font-size: var(--t-sm);
+      color: #e05c5c;
+      margin-top: 0.4rem;
+      display: none;
+    }
+    .error-msg.show { display: block; }
+
+    /* ── Navigation ── */
+    .nav-btns {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .btn-back {
+      padding: 0.85rem 1.35rem;
+      background: transparent;
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius);
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: var(--t-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-back:hover { border-color: var(--text); color: var(--text); }
+    .btn-next {
+      flex: 1;
+      padding: 0.95rem 1.5rem;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, opacity 0.2s;
+      box-shadow: 0 4px 20px rgba(61,159,232,0.3);
+    }
+    .btn-next:hover:not(:disabled) {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+    .btn-next:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 20px rgba(61,159,232,0.3);
+    }
+    .btn-submit:hover:not(:disabled) {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+    .btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .copyright {
+      font-size: var(--t-xs);
+      color: rgba(255,255,255,0.35);
+    }
+
+    @media (max-width: 480px) {
+      .quiz-wrap { padding: 1.5rem 1rem 3rem; }
+      .page-header { padding: 1.5rem 1rem 0; }
+      .btn-back { padding: 0.85rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">Business Checkup con Gabriele Lombardo</div>
+
+  <div class="logo-bar">
+    <span class="logo-text">
+      <span class="logo-main">LIFTER HOUSE</span>
+      <span class="logo-sub">Business</span>
+    </span>
+  </div>
+
+  <div class="page-header">
+    <span class="eyebrow">Candidatura</span>
+    <h1>Dicci dove sei adesso.<br>Prepariamo il checkup su misura.</h1>
+    <p>Rispondi con onestà. Non esistono risposte giuste o sbagliate.</p>
+  </div>
+
+  <div class="quiz-wrap">
+
+    <!-- Progress -->
+    <div class="progress-section">
+      <div class="progress-meta">
+        <span class="progress-label" id="progress-label">Domanda 1 di 12</span>
+        <span class="progress-pct" id="progress-pct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- ── D1 ── -->
+    <div class="step active" id="step-1">
+      <p class="question-label">Da quanto tempo lavori come personal trainer o coach?</p>
+      <p class="question-hint">Seleziona l'opzione più vicina alla tua situazione attuale.</p>
+      <div class="options-list">
+        <label class="option-card" data-value="Meno di 1 anno">
+          <span class="option-dot"></span>
+          <span class="option-text">Meno di 1 anno</span>
+        </label>
+        <label class="option-card" data-value="1-3 anni">
+          <span class="option-dot"></span>
+          <span class="option-text">1-3 anni</span>
+        </label>
+        <label class="option-card" data-value="3-5 anni">
+          <span class="option-dot"></span>
+          <span class="option-text">3-5 anni</span>
+        </label>
+        <label class="option-card" data-value="Più di 5 anni">
+          <span class="option-dot"></span>
+          <span class="option-text">Più di 5 anni</span>
+        </label>
+      </div>
+      <p class="error-msg" id="err-1">Seleziona un'opzione per continuare.</p>
+      <div class="nav-btns">
+        <button class="btn-next" id="next-1" onclick="nextStep(1)" disabled>Avanti</button>
+      </div>
+    </div>
+
+    <!-- ── D2 ── -->
+    <div class="step" id="step-2">
+      <p class="question-label">Quante ore a settimana dedichi mediamente al lavoro?</p>
+      <p class="question-hint">Conta tutto, non solo le ore in palestra. Includi il tempo che passi a scrivere schede, rispondere ai messaggi dei clienti, fare post sui social, ecc.</p>
+      <div class="options-list">
+        <label class="option-card" data-value="Meno di 20h">
+          <span class="option-dot"></span>
+          <span class="option-text">Meno di 20h</span>
+        </label>
+        <label class="option-card" data-value="20-30h">
+          <span class="option-dot"></span>
+          <span class="option-text">20-30h</span>
+        </label>
+        <label class="option-card" data-value="30-40h">
+          <span class="option-dot"></span>
+          <span class="option-text">30-40h</span>
+        </label>
+        <label class="option-card" data-value="Più di 40h">
+          <span class="option-dot"></span>
+          <span class="option-text">Più di 40h</span>
+        </label>
+      </div>
+      <p class="error-msg" id="err-2">Seleziona un'opzione per continuare.</p>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="prevStep(2)">← Torna</button>
+        <button class="btn-next" id="next-2" onclick="nextStep(2)" disabled>Avanti</button>
+      </div>
+    </div>
+
+    <!-- ── D3 ── -->
+    <div class="step" id="step-3">
+      <p class="question-label">In questo momento, qual è la cosa che ti preoccupa di più del tuo lavoro?</p>
+      <p class="question-hint">Non esiste risposta giusta o sbagliata. Scegli quella che senti più tua in questo momento.</p>
+      <div class="options-list">
+        <label class="option-card" data-value="Faccio fatica a trovare nuovi clienti">
+          <span class="option-dot"></span>
+          <span class="option-text">Faccio fatica a trovare nuovi clienti</span>
+        </label>
+        <label class="option-card" data-value="I clienti durano poco e smettono presto">
+          <span class="option-dot"></span>
+          <span class="option-text">I clienti durano poco e smettono presto</span>
+        </label>
+        <label class="option-card" data-value="Guadagno poco rispetto alle ore che lavoro">
+          <span class="option-dot"></span>
+          <span class="option-text">Guadagno poco rispetto alle ore che lavoro</span>
+        </label>
+        <label class="option-card" data-value="Non ho chiaro quanto guadagno davvero">
+          <span class="option-dot"></span>
+          <span class="option-text">Non ho chiaro quanto guadagno davvero</span>
+        </label>
+        <label class="option-card" data-value="Non riesco a organizzare bene il lavoro">
+          <span class="option-dot"></span>
+          <span class="option-text">Non riesco a organizzare bene il lavoro</span>
+        </label>
+        <label class="option-card" data-value="Voglio semplicemente crescere e migliorare">
+          <span class="option-dot"></span>
+          <span class="option-text">Voglio semplicemente crescere e migliorare</span>
+        </label>
+      </div>
+      <p class="error-msg" id="err-3">Seleziona un'opzione per continuare.</p>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="prevStep(3)">← Torna</button>
+        <button class="btn-next" id="next-3" onclick="nextStep(3)" disabled>Avanti</button>
+      </div>
+    </div>
+
+    <!-- ── D4 ── -->
+    <div class="step" id="step-4">
+      <p class="question-label">Negli ultimi 3 mesi, quante persone ti hanno contattato chiedendo informazioni sui tuoi servizi?</p>
+      <p class="question-hint">Conta tutti coloro che ti hanno scritto, chiamato o fermato per chiedere info — su Instagram, WhatsApp, in palestra, ovunque. Anche chi alla fine non ha comprato niente. Se non hai tenuto traccia, fai una stima approssimativa.</p>
+      <div class="open-input-wrap">
+        <input class="open-input" type="number" id="input-d4" min="0" placeholder="es. 12">
+      </div>
+      <p class="error-msg" id="err-4">Inserisci un numero per continuare.</p>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="prevStep(4)">← Torna</button>
+        <button class="btn-next" id="next-4" onclick="nextStep(4)" disabled>Avanti</button>
+      </div>
+    </div>
+
+    <!-- ── D5 ── -->
+    <div class="step" id="step-5">
+      <p class="question-label">Da dove arriva la maggior parte dei tuoi nuovi clienti?</p>
+      <p class="question-hint">Pensa agli ultimi 5-10 clienti che hai preso. Da dove sono arrivati nella maggior parte dei casi? Scegli il canale più frequente.</p>
+      <div class="options-list">
+        <label class="option-card" data-value="Passaparola (amici, clienti che consigliano)">
+          <span class="option-dot"></span>
+          <span class="option-text">Passaparola (amici, clienti che consigliano)</span>
+        </label>
+        <label class="option-card" data-value="Instagram o altri social">
+          <span class="option-dot"></span>
+          <span class="option-text">Instagram o altri social</span>
+        </label>
+        <label class="option-card" data-value="Contatto diretto in palestra o struttura">
+          <span class="option-dot"></span>
+          <span class="option-text">Contatto diretto in palestra o struttura</span>
+        </label>
+        <label class="option-card" data-value="Google o sito web">
+          <span class="option-dot"></span>
+          <span class="option-text">Google o sito web</span>
+        </label>
+        <label class="option-card" data-value="Non lo so / arrivano un po' da tutto">
+          <span class="option-dot"></span>
+          <span class="option-text">Non lo so / arrivano un po' da tutto</span>
+        </label>
+      </div>
+      <p class="error-msg" id="err-5">Seleziona un'opzione per continuare.</p>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="prevStep(5)">← Torna</button>
+        <button class="btn-next" id="next-5" onclick="nextStep(5)" disabled>Avanti</button>
+      </div>
+    </div>
+
+    <!-- ── D6 ── -->
+    <div class="step" id="step-6">
+      <p class="question-label">Di queste persone che ti hanno contattato, quante sono diventate tuoi clienti paganti?</p>
+      <p class="question-hint">Conta solo chi ha effettivamente pagato e iniziato con te. Chi ha detto "ci penso" o "magari il mese prossimo" non conta.</p>
+      <div class="open-input-wrap">
+        <input class="open-input" type="number" id="input-d6" min="0" placeholder="es. 5">
+      </div>
+      <p class="error-msg" id="err-6">Inserisci un numero per continuare.</p>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="prevStep(6)">← Torna</button>
+        <button class="btn-next" id="next-6" onclick="nextStep(6)" disabled>Avanti</button>
+      </div>
+    </div>
+
+    <!-- ── D7 ── -->
+    <div class="step" id="step-7">
+      <p class="question-label">Quanti clienti paganti hai in questo momento?</p>
+      <p class="question-hint">Conta solo chi ti sta pagando adesso. Non chi ha fatto una prova gratuita o è in pausa.</p>
+      <div class="open-input-wrap">
+        <input class="open-input" type="number" id="input-d7" min="0" placeholder="es. 18">
+      </div>
+      <p class="error-msg" id="err-7">Inserisci un numero per continuare.</p>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="prevStep(7)">← Torna</button>
+        <button class="btn-next" id="next-7" onclick="nextStep(7)" disabled>Avanti</button>
+      </div>
+    </div>
+
+    <!-- ── D8 ── -->
+    <div class="step" id="step-8">
+      <p class="question-label">Pensando agli ultimi abbonamenti che hai venduto, che durata avevano in media?</p>
+      <p class="question-hint">Pensa agli ultimi 5-10 clienti che hai preso: per quanto tempo si erano impegnati con te dall'inizio? Scegli l'opzione più comune.</p>
+      <div class="options-list">
+        <label class="option-card" data-value="Quasi tutti mensili (si rinnovano mese per mese)">
+          <span class="option-dot"></span>
+          <span class="option-text">Quasi tutti mensili (si rinnovano mese per mese)</span>
+        </label>
+        <label class="option-card" data-value="Principalmente trimestrali (3 mesi)">
+          <span class="option-dot"></span>
+          <span class="option-text">Principalmente trimestrali (3 mesi)</span>
+        </label>
+        <label class="option-card" data-value="Principalmente semestrali (6 mesi)">
+          <span class="option-dot"></span>
+          <span class="option-text">Principalmente semestrali (6 mesi)</span>
+        </label>
+        <label class="option-card" data-value="Principalmente annuali (12 mesi)">
+          <span class="option-dot"></span>
+          <span class="option-text">Principalmente annuali (12 mesi)</span>
+        </label>
+        <label class="option-card" data-value="Non ho abbonamenti strutturati, lavoro a sessioni singole">
+          <span class="option-dot"></span>
+          <span class="option-text">Non ho abbonamenti strutturati, lavoro a sessioni singole</span>
+        </label>
+      </div>
+      <p class="error-msg" id="err-8">Seleziona un'opzione per continuare.</p>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="prevStep(8)">← Torna</button>
+        <button class="btn-next" id="next-8" onclick="nextStep(8)" disabled>Avanti</button>
+      </div>
+    </div>
+
+    <!-- ── D9 ── -->
+    <div class="step" id="step-9">
+      <p class="question-label">Negli ultimi 3 mesi, quanti clienti avevano il contratto o l'abbonamento in scadenza?</p>
+      <p class="question-hint">Pensa a chi aveva finito il pacchetto o l'abbonamento negli ultimi 3 mesi — che abbia poi rinnovato o no. Se non tieni traccia delle scadenze, scrivi "Non tengo traccia delle scadenze".</p>
+      <div class="open-input-wrap">
+        <input class="open-input" type="text" id="input-d9" placeholder='es. 8 oppure "Non tengo traccia delle scadenze"'>
+      </div>
+      <p class="error-msg" id="err-9">Compila il campo per continuare.</p>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="prevStep(9)">← Torna</button>
+        <button class="btn-next" id="next-9" onclick="nextStep(9)" disabled>Avanti</button>
+      </div>
+    </div>
+
+    <!-- ── D10 ── -->
+    <div class="step" id="step-10">
+      <p class="question-label">Di questi clienti in scadenza, quanti hanno continuato a lavorare con te?</p>
+      <p class="question-hint">Conta solo chi ha rinnovato o firmato qualcosa di nuovo. Chi ha detto che torna in futuro ma non ha ancora pagato non conta.</p>
+      <div class="open-input-wrap">
+        <input class="open-input" type="number" id="input-d10" min="0" placeholder="es. 5">
+      </div>
+      <p class="error-msg" id="err-10">Inserisci un numero per continuare.</p>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="prevStep(10)">← Torna</button>
+        <button class="btn-next" id="next-10" onclick="nextStep(10)" disabled>Avanti</button>
+      </div>
+    </div>
+
+    <!-- ── D11 ── -->
+    <div class="step" id="step-11">
+      <p class="question-label">Quanto hai incassato in media negli ultimi 3 mesi dal tuo lavoro come personal trainer/coach?</p>
+      <p class="question-hint">Somma gli incassi degli ultimi 3 mesi e fai la media. Includi tutto: bonifici, contanti, PayPal...</p>
+      <div class="open-input-wrap">
+        <div class="input-prefix">
+          <span class="prefix-symbol">€</span>
+          <input class="open-input" type="number" id="input-d11" min="0" placeholder="es. 1800">
+        </div>
+      </div>
+      <p class="error-msg" id="err-11">Inserisci un importo per continuare.</p>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="prevStep(11)">← Torna</button>
+        <button class="btn-next" id="next-11" onclick="nextStep(11)" disabled>Avanti</button>
+      </div>
+    </div>
+
+    <!-- ── D12 ── -->
+    <div class="step" id="step-12">
+      <p class="question-label">Quanto vorresti guadagnare al mese, idealmente?</p>
+      <p class="question-hint">Parliamo di quello che vorresti portare a casa, al netto delle spese. Scegli l'obiettivo che senti più realistico per te.</p>
+      <div class="options-list">
+        <label class="option-card" data-value="Meno di 1.500€">
+          <span class="option-dot"></span>
+          <span class="option-text">Meno di 1.500€</span>
+        </label>
+        <label class="option-card" data-value="Da 1.500€ a 3.000€">
+          <span class="option-dot"></span>
+          <span class="option-text">Da 1.500€ a 3.000€</span>
+        </label>
+        <label class="option-card" data-value="Da 3.000€ a 5.000€">
+          <span class="option-dot"></span>
+          <span class="option-text">Da 3.000€ a 5.000€</span>
+        </label>
+        <label class="option-card" data-value="Più di 5.000€">
+          <span class="option-dot"></span>
+          <span class="option-text">Più di 5.000€</span>
+        </label>
+      </div>
+      <p class="error-msg" id="err-12">Seleziona un'opzione per continuare.</p>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="prevStep(12)">← Torna</button>
+        <button class="btn-next" id="next-12" onclick="nextStep(12)" disabled>Avanti</button>
+      </div>
+    </div>
+
+    <!-- ── Step 13: Contatti ── -->
+    <div class="step" id="step-13">
+      <p class="question-label">Quasi fatto. Lasciaci i tuoi riferimenti.</p>
+      <p class="question-hint">Useremo questi dati solo per contattarti in merito alla tua candidatura.</p>
+      <div class="contact-fields">
+        <div class="field-group">
+          <label for="input-nome">Nome e cognome</label>
+          <input class="open-input" type="text" id="input-nome" placeholder="es. Marco Rossi" autocomplete="name">
+        </div>
+        <div class="field-group">
+          <label for="input-email">Email</label>
+          <input class="open-input" type="email" id="input-email" placeholder="es. marco@gmail.com" autocomplete="email">
+        </div>
+        <div class="field-group">
+          <label for="input-tel">Telefono (WhatsApp)</label>
+          <input class="open-input" type="tel" id="input-tel" placeholder="es. 333 1234567" autocomplete="tel">
+        </div>
+      </div>
+      <p class="error-msg" id="err-13">Compila tutti i campi correttamente per continuare.</p>
+      <div class="nav-btns" style="flex-direction:column; gap:0.75rem;">
+        <button class="btn-submit" id="btn-submit" onclick="submitForm()">Invia candidatura</button>
+        <button class="btn-back" onclick="prevStep(13)" style="width:100%; text-align:center;">← Torna</button>
+      </div>
+    </div>
+
+  </div><!-- /quiz-wrap -->
+
+  <footer>
+    <p class="copyright">Copyright 2025 – Lifter House – Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    const TOTAL_STEPS = 12;
+    let currentStep = 1;
+    const answers = {};
+
+    const CHOICE_STEPS = [1, 2, 3, 5, 8, 12];
+    const NUMBER_STEPS = [4, 6, 7, 10, 11];
+    const TEXT_STEPS   = [9];
+
+    // ── Progress ─────────────────────────────────────
+    function updateProgress(step) {
+      const labelEl = document.getElementById('progress-label');
+      const pctEl   = document.getElementById('progress-pct');
+      const fillEl  = document.getElementById('progress-fill');
+      if (step <= TOTAL_STEPS) {
+        const pct = Math.round(((step - 1) / TOTAL_STEPS) * 100);
+        labelEl.textContent = 'Domanda ' + step + ' di ' + TOTAL_STEPS;
+        pctEl.textContent   = pct + '%';
+        fillEl.style.width  = pct + '%';
+      } else {
+        labelEl.textContent = 'Ultime informazioni';
+        pctEl.textContent   = '100%';
+        fillEl.style.width  = '100%';
+      }
+    }
+
+    // ── Navigation ───────────────────────────────────
+    function showStep(n) {
+      document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+      document.getElementById('step-' + n).classList.add('active');
+      currentStep = n;
+      updateProgress(n);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function nextStep(n) {
+      if (!validateStep(n)) return;
+      saveAnswer(n);
+      showStep(n + 1);
+    }
+
+    function prevStep(n) {
+      if (n > 1) showStep(n - 1);
+    }
+
+    // ── Validation ───────────────────────────────────
+    function validateStep(n) {
+      var errEl = document.getElementById('err-' + n);
+
+      if (CHOICE_STEPS.indexOf(n) !== -1) {
+        var sel = document.querySelector('#step-' + n + ' .option-card.selected');
+        if (!sel) { errEl.classList.add('show'); return false; }
+
+      } else if (NUMBER_STEPS.indexOf(n) !== -1) {
+        var val = document.getElementById('input-d' + n).value.trim();
+        if (val === '' || isNaN(val) || Number(val) < 0) {
+          errEl.classList.add('show'); return false;
+        }
+
+      } else if (TEXT_STEPS.indexOf(n) !== -1) {
+        var val = document.getElementById('input-d' + n).value.trim();
+        if (!val) { errEl.classList.add('show'); return false; }
+
+      } else if (n === 13) {
+        var nome  = document.getElementById('input-nome').value.trim();
+        var email = document.getElementById('input-email').value.trim();
+        var tel   = document.getElementById('input-tel').value.trim();
+        var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!nome || !emailOk || !tel) { errEl.classList.add('show'); return false; }
+      }
+
+      if (errEl) errEl.classList.remove('show');
+      return true;
+    }
+
+    // ── Save answer ──────────────────────────────────
+    function saveAnswer(n) {
+      if (CHOICE_STEPS.indexOf(n) !== -1) {
+        answers['d' + n] = document.querySelector('#step-' + n + ' .option-card.selected').dataset.value;
+      } else if (NUMBER_STEPS.indexOf(n) !== -1 || TEXT_STEPS.indexOf(n) !== -1) {
+        answers['d' + n] = document.getElementById('input-d' + n).value.trim();
+      }
+    }
+
+    // ── Option card clicks ───────────────────────────
+    document.querySelectorAll('.options-list').forEach(function(list) {
+      list.querySelectorAll('.option-card').forEach(function(card) {
+        card.addEventListener('click', function() {
+          list.querySelectorAll('.option-card').forEach(function(c) { c.classList.remove('selected'); });
+          card.classList.add('selected');
+
+          var stepEl = card.closest('.step');
+          var stepId = stepEl.id.replace('step-', '');
+          var nextBtn = document.getElementById('next-' + stepId);
+          if (nextBtn) nextBtn.disabled = false;
+
+          var errEl = document.getElementById('err-' + stepId);
+          if (errEl) errEl.classList.remove('show');
+        });
+      });
+    });
+
+    // ── Numeric input watchers ───────────────────────
+    NUMBER_STEPS.forEach(function(n) {
+      var el = document.getElementById('input-d' + n);
+      if (!el) return;
+      el.addEventListener('input', function() {
+        var val = el.value.trim();
+        var ok = val !== '' && !isNaN(val) && Number(val) >= 0;
+        document.getElementById('next-' + n).disabled = !ok;
+        if (ok) document.getElementById('err-' + n).classList.remove('show');
+      });
+    });
+
+    // ── Text input watcher (D9) ──────────────────────
+    document.getElementById('input-d9').addEventListener('input', function() {
+      var val = this.value.trim();
+      document.getElementById('next-9').disabled = !val;
+      if (val) document.getElementById('err-9').classList.remove('show');
+    });
+
+    // ── Submit ───────────────────────────────────────
+    function submitForm() {
+      if (!validateStep(13)) return;
+
+      var btn = document.getElementById('btn-submit');
+      btn.disabled = true;
+      btn.textContent = 'Invio in corso...';
+
+      var payload = {
+        d1_esperienza:     answers['d1']  || '',
+        d2_ore:            answers['d2']  || '',
+        d3_preoccupazione: answers['d3']  || '',
+        d4_contatti:       answers['d4']  || '',
+        d5_fonte:          answers['d5']  || '',
+        d6_conversioni:    answers['d6']  || '',
+        d7_clienti_attivi: answers['d7']  || '',
+        d8_durata:         answers['d8']  || '',
+        d9_scadenze:       answers['d9']  || '',
+        d10_rinnovi:       answers['d10'] || '',
+        d11_incasso:       answers['d11'] || '',
+        d12_obiettivo:     answers['d12'] || '',
+        nome:              document.getElementById('input-nome').value.trim(),
+        email:             document.getElementById('input-email').value.trim(),
+        telefono:          document.getElementById('input-tel').value.trim()
+      };
+
+      fetch('https://hook.eu2.make.com/wbjhxv2bdy8neojik4xsigdinwv6jl0n', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function() { window.location.href = 'prenota.html'; })
+      .catch(function() { window.location.href = 'prenota.html'; });
+    }
+
+    // Init
+    updateProgress(1);
+  </script>
+
+</body>
+</html>
