@@ -768,7 +768,7 @@
         <p class="name">Gabriele Lombardo</p>
         <p class="title">Ex Socio & Amministratore · Catena Fitness Nazionale</p>
         <p>
-          Ha gestito dall'interno una delle catene fitness più grandi d'Italia.
+          Ha gestito un centro di una delle catene fitness più grandi d'Italia.
           Contratti, rinnovi, conversioni, abbandoni: conosce esattamente dove i trainer perdono soldi senza accorgersene.
         </p>
       </div>
@@ -810,17 +810,11 @@
       <div class="discover-item">
         <div class="discover-num">3</div>
         <p class="discover-text">
-          <strong>L'errore che fa perdere soldi</strong> anche ai trainer più bravi (e come correggerlo in pochi giorni)
-        </p>
-      </div>
-      <div class="discover-item">
-        <div class="discover-num">4</div>
-        <p class="discover-text">
           Come costruire un <strong>fatturato prevedibile</strong> lavorando offline, senza social e senza funnel
         </p>
       </div>
     </div>
-    <a href="#form" class="btn-to-form" style="margin-top:2rem;">Voglio scoprire i 4 numeri →</a>
+    <div style="text-align:center; margin-top:2rem;"><a href="#form" class="btn-to-form">Voglio scoprire i 4 numeri →</a></div>
   </section>
 
   <div class="divider"></div>
@@ -832,39 +826,39 @@
     <p class="testimonials-sub">Persone normali, che lavoravano come te — e che hanno cambiato qualcosa.</p>
     <div class="videos-grid">
       <div class="video-item">
-        <div class="video-embed video-thumb" data-id="lWbSKa35wNk">
-          <img src="https://img.youtube.com/vi/lWbSKa35wNk/hqdefault.jpg" alt="Testimonianza Andrea Buttà">
+        <div class="video-embed video-thumb" data-ytid="lWbSKa35wNk">
+          <img src="https://i.ytimg.com/vi/lWbSKa35wNk/hqdefault.jpg" alt="Testimonianza Andrea Buttà" loading="lazy">
           <button class="play-btn" aria-label="Riproduci video">&#9654;</button>
         </div>
         <p class="video-name">Andrea Buttà</p>
         <p class="video-job">Calisthenics e Streetlifting</p>
       </div>
       <div class="video-item">
-        <div class="video-embed video-thumb" data-id="-uue1dVg-qw">
-          <img src="https://img.youtube.com/vi/-uue1dVg-qw/hqdefault.jpg" alt="Testimonianza Mirko Nutricato">
+        <div class="video-embed video-thumb" data-ytid="-uue1dVg-qw">
+          <img src="https://i.ytimg.com/vi/-uue1dVg-qw/hqdefault.jpg" alt="Testimonianza Mirko Nutricato" loading="lazy">
           <button class="play-btn" aria-label="Riproduci video">&#9654;</button>
         </div>
         <p class="video-name">Mirko Nutricato</p>
         <p class="video-job">Powerlifting e Streetlifting a livello agonistico</p>
       </div>
       <div class="video-item">
-        <div class="video-embed video-thumb" data-id="GgCsfNa7OwQ">
-          <img src="https://img.youtube.com/vi/GgCsfNa7OwQ/hqdefault.jpg" alt="Testimonianza Alessio Miravalle">
+        <div class="video-embed video-thumb" data-ytid="GgCsfNa7OwQ">
+          <img src="https://i.ytimg.com/vi/GgCsfNa7OwQ/hqdefault.jpg" alt="Testimonianza Alessio Miravalle" loading="lazy">
           <button class="play-btn" aria-label="Riproduci video">&#9654;</button>
         </div>
         <p class="video-name">Alessio Miravalle</p>
         <p class="video-job">PT, Powerlifting e Natural Bodybuilding</p>
       </div>
       <div class="video-item">
-        <div class="video-embed video-thumb" data-id="ZkyjKpJQx2s">
-          <img src="https://img.youtube.com/vi/ZkyjKpJQx2s/hqdefault.jpg" alt="Testimonianza Davide Feltrin">
+        <div class="video-embed video-thumb" data-ytid="ZkyjKpJQx2s">
+          <img src="https://i.ytimg.com/vi/ZkyjKpJQx2s/hqdefault.jpg" alt="Testimonianza Davide Feltrin" loading="lazy">
           <button class="play-btn" aria-label="Riproduci video">&#9654;</button>
         </div>
         <p class="video-name">Davide Feltrin</p>
         <p class="video-job">Coach di Calisthenics Skills</p>
       </div>
     </div>
-    <a href="#form" class="btn-to-form">Voglio scoprire i 4 numeri →</a>
+    <div style="text-align:center;"><a href="#form" class="btn-to-form">Voglio scoprire i 4 numeri →</a></div>
   </section>
 
   <div class="divider"></div>
@@ -914,8 +908,18 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           })
-          .then(function() { window.location.href = 'vsl.html'; })
-          .catch(function() { window.location.href = 'vsl.html'; });
+          .then(function() {
+            sessionStorage.setItem('lh_nome', payload.nome);
+            sessionStorage.setItem('lh_email', payload.email);
+            sessionStorage.setItem('lh_telefono', payload.telefono);
+            window.location.href = 'vsl.html';
+          })
+          .catch(function() {
+            sessionStorage.setItem('lh_nome', payload.nome);
+            sessionStorage.setItem('lh_email', payload.email);
+            sessionStorage.setItem('lh_telefono', payload.telefono);
+            window.location.href = 'vsl.html';
+          });
         });
       </script>
       <p class="privacy-note">🔒 Puoi cancellarti in qualsiasi momento.</p>
@@ -934,7 +938,7 @@
   <script>
     document.querySelectorAll('.video-thumb').forEach(function(el) {
       el.addEventListener('click', function() {
-        var id = el.dataset.id;
+        var id = el.dataset.ytid;
         var iframe = document.createElement('iframe');
         iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
         iframe.allow = 'autoplay; encrypted-media';

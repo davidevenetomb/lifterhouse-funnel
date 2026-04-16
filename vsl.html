@@ -576,7 +576,7 @@
 </head>
 <body>
 
-  <div class="topbar">Video esclusivo · Accesso riservato agli iscritti</div>
+  <div class="topbar">Video esclusivo</div>
 
   <div class="logo-bar">
     <span class="logo-text">
@@ -587,7 +587,6 @@
 
   <!-- Hero -->
   <section class="vsl-hero">
-    <span class="eyebrow">Solo per Trainer Offline</span>
     <h1>I 4 numeri che nessuno ti ha mai mostrato.<br>E che decidono il tuo fatturato.</h1>
     <p class="sub">Guarda il video fino in fondo. I 4 numeri vengono svelati verso la fine.</p>
   </section>
@@ -621,9 +620,9 @@
       <span class="quiz-eyebrow">Business Checkup con Gabriele Lombardo</span>
       <h2>Richiedi il tuo Business Checkup con Gabriele Lombardo</h2>
       <p>Analizziamo i tuoi numeri prima della chiamata e ti mostriamo cosa fare per rendere il tuo fatturato stabile e prevedibile.</p>
-      <p>Ha gestito una delle catene fitness più grandi d'Italia dall'interno e ha già aiutato decine di trainer ad aumentare il fatturato grazie al controllo dei numeri.</p>
+      <p>Ha gestito un centro di una delle catene fitness più grandi d'Italia e ha già aiutato decine di trainer ad aumentare il fatturato grazie al controllo dei numeri.</p>
       <p><strong>I posti disponibili per aprile sono 10. Richiedi ora il tuo.</strong></p>
-      <button class="btn-start-quiz" onclick="startQuiz()">Inizia il checkup →</button>
+      <button class="btn-start-quiz" onclick="startQuiz()">Scopri cosa blocca il tuo business →</button>
     </div>
 
     <!-- Quiz steps (mostrati al click) -->
@@ -704,7 +703,8 @@
         <p class="step-question">Negli ultimi 3 mesi, quante persone ti hanno contattato chiedendo informazioni sui tuoi servizi?</p>
         <p class="step-hint">Conta tutti coloro che ti hanno scritto, chiamato o fermato per chiedere info — su Instagram, WhatsApp, in palestra, ovunque. Anche chi alla fine non ha comprato niente. Se non hai tenuto traccia, fai una stima approssimativa.</p>
         <div class="input-wrap">
-          <input class="open-input" type="number" id="input-d4" min="0" placeholder="es. 12">
+          <label for="input-d4" style="display:block;font-size:0.8rem;color:var(--muted);margin-bottom:0.4rem;font-family:var(--font-body);">Scrivi un numero o una stima</label>
+          <input class="open-input" type="text" id="input-d4" placeholder="es. 12">
         </div>
         <p class="error-msg" id="err-4">Inserisci un numero per continuare.</p>
         <div class="nav-btns">
@@ -734,9 +734,10 @@
       <!-- D6 -->
       <div class="step" id="step-6">
         <p class="step-question">Di queste persone che ti hanno contattato, quante sono diventate tuoi clienti paganti?</p>
-        <p class="step-hint">Conta solo chi ha effettivamente pagato e iniziato con te. Chi ha detto "ci penso" o "magari il mese prossimo" non conta.</p>
+        <p class="step-hint">Conta solo chi ha effettivamente pagato e iniziato con te. Chi ha detto "ci penso" o "magari il mese prossimo" non conta. Se non lo sai, scrivi "Non lo so".</p>
         <div class="input-wrap">
-          <input class="open-input" type="number" id="input-d6" min="0" placeholder="es. 5">
+          <label for="input-d6" style="display:block;font-size:0.8rem;color:var(--muted);margin-bottom:0.4rem;font-family:var(--font-body);">Scrivi un numero, oppure "Non lo so"</label>
+          <input class="open-input" type="text" id="input-d6" placeholder="es. 5">
         </div>
         <p class="error-msg" id="err-6">Inserisci un numero per continuare.</p>
         <div class="nav-btns">
@@ -748,9 +749,10 @@
       <!-- D7 -->
       <div class="step" id="step-7">
         <p class="step-question">Quanti clienti paganti hai in questo momento?</p>
-        <p class="step-hint">Conta solo chi ti sta pagando adesso. Non chi ha fatto una prova gratuita o è in pausa.</p>
+        <p class="step-hint">Conta solo chi ti sta pagando adesso. Non chi ha fatto una prova gratuita o è in pausa. Se non lo sai, scrivi "Non lo so".</p>
         <div class="input-wrap">
-          <input class="open-input" type="number" id="input-d7" min="0" placeholder="es. 18">
+          <label for="input-d7" style="display:block;font-size:0.8rem;color:var(--muted);margin-bottom:0.4rem;font-family:var(--font-body);">Scrivi un numero, oppure "Non lo so"</label>
+          <input class="open-input" type="text" id="input-d7" placeholder="es. 18">
         </div>
         <p class="error-msg" id="err-7">Inserisci un numero per continuare.</p>
         <div class="nav-btns">
@@ -780,7 +782,7 @@
       <!-- D9 -->
       <div class="step" id="step-9">
         <p class="step-question">Negli ultimi 3 mesi, quanti clienti avevano il contratto o l'abbonamento in scadenza?</p>
-        <p class="step-hint">Pensa a chi aveva finito il pacchetto o l'abbonamento negli ultimi 3 mesi — che abbia poi rinnovato o no. Se non tieni traccia delle scadenze, scrivi "Non tengo traccia delle scadenze".</p>
+        <p class="step-hint">Pensa a chi aveva finito il pacchetto o l'abbonamento negli ultimi 3 mesi, che abbia poi rinnovato o no. Se non lo sai, scrivi "Non lo so".</p>
         <div class="input-wrap">
           <input class="open-input" type="text" id="input-d9" placeholder='es. 8 oppure "Non tengo traccia delle scadenze"'>
         </div>
@@ -794,9 +796,10 @@
       <!-- D10 -->
       <div class="step" id="step-10">
         <p class="step-question">Di questi clienti in scadenza, quanti hanno continuato a lavorare con te?</p>
-        <p class="step-hint">Conta solo chi ha rinnovato o firmato qualcosa di nuovo. Chi ha detto che torna in futuro ma non ha ancora pagato non conta.</p>
+        <p class="step-hint">Conta solo chi ha rinnovato o firmato qualcosa di nuovo. Chi ha detto che torna in futuro ma non ha ancora pagato non conta. Se non lo sai, scrivi "Non lo so".</p>
         <div class="input-wrap">
-          <input class="open-input" type="number" id="input-d10" min="0" placeholder="es. 5">
+          <label for="input-d10" style="display:block;font-size:0.8rem;color:var(--muted);margin-bottom:0.4rem;font-family:var(--font-body);">Scrivi un numero, oppure "Non lo so"</label>
+          <input class="open-input" type="text" id="input-d10" placeholder="es. 5">
         </div>
         <p class="error-msg" id="err-10">Inserisci un numero per continuare.</p>
         <div class="nav-btns">
@@ -809,6 +812,7 @@
       <div class="step" id="step-11">
         <p class="step-question">Quanto hai incassato in media negli ultimi 3 mesi dal tuo lavoro come personal trainer/coach?</p>
         <p class="step-hint">Somma gli incassi degli ultimi 3 mesi e fai la media. Includi tutto: bonifici, contanti, PayPal...</p>
+        <label for="input-d11" style="display:block;font-size:0.8rem;color:var(--muted);margin-bottom:0.4rem;font-family:var(--font-body);">Scrivi un importo in euro</label>
         <div class="input-prefix">
           <span class="prefix-sym">€</span>
           <input class="open-input" type="number" id="input-d11" min="0" placeholder="es. 1800">
@@ -840,7 +844,7 @@
       <!-- Step 13: Contatti -->
       <div class="step" id="step-13">
         <p class="step-question">Quasi fatto. Lasciaci i tuoi riferimenti.</p>
-        <p class="step-hint">Useremo questi dati solo per contattarti in merito alla tua candidatura.</p>
+        <p class="step-hint">Useremo questi dati solo per contattarti per fissare il business checkup.</p>
         <div class="contact-fields">
           <div class="field-group">
             <label for="input-nome">Nome e cognome</label>
@@ -923,8 +927,8 @@
     var currentStep   = 1;
     var answers       = {};
     var CHOICE_STEPS  = [1, 2, 3, 5, 8, 12];
-    var NUMBER_STEPS  = [4, 6, 7, 10, 11];
-    var TEXT_STEPS    = [9];
+    var NUMBER_STEPS  = [11];
+    var TEXT_STEPS    = [4, 6, 7, 9, 10];
 
     function updateProgress(n) {
       var labelEl = document.getElementById('progress-text');
@@ -947,6 +951,14 @@
       document.getElementById('step-' + n).classList.add('active');
       currentStep = n;
       updateProgress(n);
+      if (n === 13) {
+        var nEl = document.getElementById('input-nome');
+        var eEl = document.getElementById('input-email');
+        var tEl = document.getElementById('input-tel');
+        if (!nEl.value) nEl.value = sessionStorage.getItem('lh_nome') || '';
+        if (!eEl.value) eEl.value = sessionStorage.getItem('lh_email') || '';
+        if (!tEl.value) tEl.value = sessionStorage.getItem('lh_telefono') || '';
+      }
       quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
@@ -1004,7 +1016,7 @@
       });
     });
 
-    // Number input watchers
+    // Number input watcher (D11 only)
     NUMBER_STEPS.forEach(function(n) {
       var el = document.getElementById('input-d' + n);
       if (!el) return;
@@ -1016,11 +1028,15 @@
       });
     });
 
-    // Text input watcher (D9)
-    document.getElementById('input-d9').addEventListener('input', function() {
-      var val = this.value.trim();
-      document.getElementById('next-9').disabled = !val;
-      if (val) document.getElementById('err-9').classList.remove('show');
+    // Text input watchers (D4, D6, D7, D9, D10)
+    TEXT_STEPS.forEach(function(n) {
+      var el = document.getElementById('input-d' + n);
+      if (!el) return;
+      el.addEventListener('input', function() {
+        var val = el.value.trim();
+        document.getElementById('next-' + n).disabled = !val;
+        if (val) document.getElementById('err-' + n).classList.remove('show');
+      });
     });
 
     function submitQuiz() {
