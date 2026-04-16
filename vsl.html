@@ -827,14 +827,12 @@
       <!-- D12 -->
       <div class="step" id="step-12">
         <p class="step-question">Quanto vorresti guadagnare al mese, idealmente?</p>
-        <p class="step-hint">Parliamo di quello che vorresti portare a casa, al netto delle spese. Scegli l'obiettivo che senti più realistico per te.</p>
-        <div class="options">
-          <div class="option-card" data-value="Meno di 1.500€"><span class="option-dot"></span>Meno di 1.500€</div>
-          <div class="option-card" data-value="Da 1.500€ a 3.000€"><span class="option-dot"></span>Da 1.500€ a 3.000€</div>
-          <div class="option-card" data-value="Da 3.000€ a 5.000€"><span class="option-dot"></span>Da 3.000€ a 5.000€</div>
-          <div class="option-card" data-value="Più di 5.000€"><span class="option-dot"></span>Più di 5.000€</div>
+        <p class="step-hint">Parliamo di quello che vorresti portare a casa, al netto delle spese. Scrivi una cifra o un range.</p>
+        <div class="input-wrap">
+          <label for="input-d12" style="display:block;font-size:0.8rem;color:var(--muted);margin-bottom:0.4rem;font-family:var(--font-body);">Scrivi un importo in euro</label>
+          <input class="open-input" type="text" id="input-d12" placeholder="es. 3000">
         </div>
-        <p class="error-msg" id="err-12">Seleziona un'opzione per continuare.</p>
+        <p class="error-msg" id="err-12">Compila il campo per continuare.</p>
         <div class="nav-btns">
           <button class="btn-back" onclick="prevStep(12)">← Indietro</button>
           <button class="btn-next" id="next-12" onclick="nextStep(12)" disabled>Avanti</button>
@@ -926,9 +924,9 @@
     var TOTAL_STEPS   = 12;
     var currentStep   = 1;
     var answers       = {};
-    var CHOICE_STEPS  = [1, 2, 3, 5, 8, 12];
+    var CHOICE_STEPS  = [1, 2, 3, 5, 8];
     var NUMBER_STEPS  = [11];
-    var TEXT_STEPS    = [4, 6, 7, 9, 10];
+    var TEXT_STEPS    = [4, 6, 7, 9, 10, 12];
 
     function updateProgress(n) {
       var labelEl = document.getElementById('progress-text');
