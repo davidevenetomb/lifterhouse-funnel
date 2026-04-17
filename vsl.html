@@ -7,6 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <!-- Lifter House: Consent + Meta Pixel -->
+  <script src="lifter-consent.js"></script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1373183478187151&ev=PageView&noscript=1" alt=""/></noscript>
   <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -542,6 +545,20 @@
     }
     .error-msg.show { display: block; }
 
+    /* Consent checkboxes (step 13) */
+    .consent-item {
+      display: flex; align-items: flex-start; gap: 0.55rem;
+      font-size: 0.82rem; color: var(--text-sub);
+      text-align: left; line-height: 1.5;
+      margin: 0.5rem 0; cursor: pointer;
+    }
+    .consent-item input[type=checkbox] {
+      width: 18px; height: 18px;
+      margin-top: 2px; flex-shrink: 0;
+      accent-color: var(--accent); cursor: pointer;
+    }
+    .consent-item a { color: var(--accent); text-decoration: underline; }
+
 
     /* ── Footer ── */
     footer {
@@ -854,7 +871,21 @@
             <input class="open-input" type="tel" id="input-tel" placeholder="es. 333 1234567" autocomplete="tel">
           </div>
         </div>
-        <p class="error-msg" id="err-13">Compila tutti i campi correttamente per continuare.</p>
+
+        <label class="consent-item">
+          <input type="checkbox" id="q-consent-privacy">
+          <span>Ho letto e accetto la <a href="privacy-policy.html" target="_blank">Privacy Policy</a> e acconsento al trattamento dei miei dati per essere ricontattato. *</span>
+        </label>
+        <label class="consent-item">
+          <input type="checkbox" id="q-consent-profiling">
+          <span>Acconsento alla profilazione delle mie risposte per personalizzare la chiamata strategica.</span>
+        </label>
+        <label class="consent-item">
+          <input type="checkbox" id="q-consent-marketing">
+          <span>Acconsento all'invio di newsletter e materiale informativo (facoltativo).</span>
+        </label>
+
+        <p class="error-msg" id="err-13">Compila tutti i campi e accetta la Privacy Policy per continuare.</p>
         <div class="nav-btns" style="flex-direction:column; gap:0.75rem;">
           <button class="btn-submit" id="btn-submit" onclick="submitQuiz()">Invia candidatura</button>
           <button class="btn-back" onclick="prevStep(13)" style="width:100%; text-align:center;">← Indietro</button>
@@ -869,6 +900,11 @@
   <footer>
     <p class="footer-logo">LIFTER <span>HOUSE</span></p>
     <p class="copyright">Copyright 2025 – Lifter House – Tutti i diritti riservati</p>
+    <p style="margin-top:0.6rem;font-size:0.78rem;color:#8fa3bc;">
+      <a href="privacy-policy.html" style="color:#8fa3bc;text-decoration:none;margin:0 0.25rem;">Privacy Policy</a> ·
+      <a href="cookie-policy.html" style="color:#8fa3bc;text-decoration:none;margin:0 0.25rem;">Cookie Policy</a> ·
+      <a href="#" onclick="if(window.LifterConsent)window.LifterConsent.reopen();return false;" style="color:#8fa3bc;text-decoration:none;margin:0 0.25rem;">Gestisci cookie</a>
+    </p>
     <p class="copyright" style="margin-top:0.5rem; max-width:600px; margin-left:auto; margin-right:auto;">
       Questo sito non fa parte di Facebook o Facebook Inc. Inoltre, questo sito non è in alcun modo approvato da Facebook. Facebook è un marchio registrato di Meta Platforms, Inc.
     </p>
@@ -981,7 +1017,8 @@
         var nome  = document.getElementById('input-nome').value.trim();
         var email = document.getElementById('input-email').value.trim();
         var tel   = document.getElementById('input-tel').value.trim();
-        ok = !!(nome && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && tel);
+        var privacyOk = document.getElementById('q-consent-privacy').checked;
+        ok = !!(nome && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && tel && privacyOk);
       }
       if (!ok) { errEl.classList.add('show'); return false; }
       errEl.classList.remove('show');
@@ -1055,7 +1092,11 @@
         d12_obiettivo:     answers['d12'] || '',
         nome:              document.getElementById('input-nome').value.trim(),
         email:             document.getElementById('input-email').value.trim(),
-        telefono:          document.getElementById('input-tel').value.trim()
+        telefono:          document.getElementById('input-tel').value.trim(),
+        consent_privacy:   document.getElementById('q-consent-privacy').checked,
+        consent_profiling: document.getElementById('q-consent-profiling').checked,
+        consent_marketing: document.getElementById('q-consent-marketing').checked,
+        consent_ts:        new Date().toISOString()
       };
 
       fetch('https://hook.eu2.make.com/wbjhxv2bdy8neojik4xsigdinwv6jl0n', {
