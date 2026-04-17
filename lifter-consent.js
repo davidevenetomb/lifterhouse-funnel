@@ -43,14 +43,12 @@
     s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
   }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
 
-  fbq('consent', 'revoke'); // default OFF
+  // TEST MODE: banner disattivato, consenso auto-grant.
+  // Per ripristinare la conformità GDPR, ri-attivare lo snippet originale
+  // (fbq('consent','revoke') + banner).
   fbq('init', PIXEL_ID);
+  fbq('consent', 'grant');
   fbq('track', 'PageView');
-
-  var initial = readConsent();
-  if (initial && initial.marketing) {
-    fbq('consent', 'grant');
-  }
 
   // ---------- Banner UI ----------
   var BANNER_CSS = [
@@ -157,14 +155,10 @@
   };
 
   // ---------- Boot ----------
-  function maybeShow() {
-    if (!readConsent()) injectBanner();
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', maybeShow);
-  } else {
-    maybeShow();
-  }
+  // TEST MODE: banner disattivato. Per riattivarlo, scommentare la chiamata sotto.
+  // function maybeShow() { if (!readConsent()) injectBanner(); }
+  // if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', maybeShow);
+  // else maybeShow();
 
   // Helper per Lead event (usato da index.html)
   window.lhGenEventId = function () {
