@@ -913,10 +913,6 @@
           <input type="checkbox" id="f-consent-privacy" required>
           <span>Ho letto e accetto la <a href="privacy-policy.html" target="_blank">Privacy Policy</a> e acconsento al trattamento dei miei dati per essere ricontattato. *</span>
         </label>
-        <label class="consent-item">
-          <input type="checkbox" id="f-consent-marketing">
-          <span>Acconsento all'invio di newsletter e materiale informativo via email/WhatsApp (facoltativo).</span>
-        </label>
         <p class="consent-error" id="f-consent-error">Devi accettare la Privacy Policy per continuare.</p>
 
         <button type="submit" id="optin-btn">Voglio scoprire i 4 numeri →</button>
@@ -940,7 +936,6 @@
           var nome = document.getElementById('f-nome').value;
           var email = document.getElementById('f-email').value;
           var telefono = document.getElementById('f-tel').value;
-          var consentMarketing = document.getElementById('f-consent-marketing').checked;
 
           // Event ID condiviso tra Pixel (browser) e CAPI (server) per deduplicazione Meta
           var eventId = (window.lhGenEventId ? window.lhGenEventId() : 'lead_' + Date.now());
@@ -962,7 +957,6 @@
             email: email,
             telefono: telefono,
             consent_privacy: true,
-            consent_marketing: consentMarketing,
             consent_ts: new Date().toISOString(),
             // dati per CAPI lato Make.com
             event_id: eventId,

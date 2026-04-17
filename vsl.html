@@ -880,10 +880,6 @@
           <input type="checkbox" id="q-consent-profiling">
           <span>Acconsento alla profilazione delle mie risposte per personalizzare la chiamata strategica.</span>
         </label>
-        <label class="consent-item">
-          <input type="checkbox" id="q-consent-marketing">
-          <span>Acconsento all'invio di newsletter e materiale informativo (facoltativo).</span>
-        </label>
 
         <p class="error-msg" id="err-13">Compila tutti i campi e accetta la Privacy Policy per continuare.</p>
         <div class="nav-btns" style="flex-direction:column; gap:0.75rem;">
@@ -1095,7 +1091,6 @@
         telefono:          document.getElementById('input-tel').value.trim(),
         consent_privacy:   document.getElementById('q-consent-privacy').checked,
         consent_profiling: document.getElementById('q-consent-profiling').checked,
-        consent_marketing: document.getElementById('q-consent-marketing').checked,
         consent_ts:        new Date().toISOString()
       };
 
