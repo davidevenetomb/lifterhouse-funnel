@@ -974,11 +974,19 @@
             window.location.href = 'vsl.html';
           }
 
-          fetch('https://hook.eu2.make.com/3l0r8xpqkx5e6vvd87mtvmsnmgsmekqq', {
+          var hookCrm  = 'https://hook.eu2.make.com/3l0r8xpqkx5e6vvd87mtvmsnmgsmekqq';
+          var hookCapi = 'https://hook.eu2.make.com/k63dub91q9tkc2m4ae2o2ns4wbzvn4ya';
+          var opts = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
-          }).then(done).catch(done);
+          };
+
+          // Fire-and-forget CAPI (non blocca il redirect)
+          try { fetch(hookCapi, opts); } catch (err) {}
+
+          // CRM principale — aspetta risposta poi redirect
+          fetch(hookCrm, opts).then(done).catch(done);
         });
       </script>
       <p class="privacy-note">🔒 Puoi cancellarti in qualsiasi momento.</p>
