@@ -1,6 +1,6 @@
 /*!
- * Lifter House — Cookie Consent + Meta Pixel
- * - Carica Meta Pixel sempre (in stato "revoke")
+ * Lifter House — Cookie Consent + Meta Pixel + Google Analytics 4
+ * - Carica Meta Pixel e GA4 sempre (in stato "revoke" / "denied")
  * - Grant / Revoke in base al consenso utente
  * - Banner: Accetta tutti / Rifiuta tutti / Personalizza
  * - Consenso salvato in localStorage per 12 mesi
@@ -10,6 +10,7 @@
 
   var CONSENT_KEY = 'lh_cookie_consent';
   var PIXEL_ID = '1373183478187151';
+  var GA_ID = 'G-X7F175813L';
 
   // ---------- Storage helpers ----------
   function readConsent() {
@@ -49,6 +50,35 @@
   fbq('init', PIXEL_ID);
   fbq('consent', 'grant');
   fbq('track', 'PageView');
+
+  // ---------- Google Analytics 4 (gtag.js) ----------
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { dataLayer.push(arguments); };
+
+  // Consent Mode v2 — default denied (GDPR). Sarà aggiornato sotto in base al consenso.
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    wait_for_update: 500
+  });
+
+  gtag('js', new Date());
+  gtag('config', GA_ID);
+
+  // TEST MODE: auto-grant (coerente con Meta Pixel sopra).
+  gtag('consent', 'update', {
+    ad_storage: 'granted',
+    ad_user_data: 'granted',
+    ad_personalization: 'granted',
+    analytics_storage: 'granted'
+  });
+
+  var gaScript = document.createElement('script');
+  gaScript.async = true;
+  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(gaScript);
 
   // ---------- Banner UI ----------
   var BANNER_CSS = [
@@ -99,7 +129,7 @@
         '</div>' +
         '<div class="lh-cb-row">' +
           '<input type="checkbox" id="lh-cb-mkt"' + (existing && existing.marketing ? ' checked' : '') + '>' +
-          '<label for="lh-cb-mkt">Cookie di marketing<small>Meta Pixel + CAPI per misurare le campagne. Richiede il tuo consenso.</small></label>' +
+          '<label for="lh-cb-mkt">Cookie di marketing e analytics<small>Meta Pixel + CAPI e Google Analytics 4 per misurare traffico e campagne. Richiede il tuo consenso.</small></label>' +
         '</div>' +
       '</div>' +
       '<div class="lh-cb-btns">' +
@@ -140,6 +170,15 @@
     if (window.fbq) {
       if (c.marketing) fbq('consent', 'grant');
       else fbq('consent', 'revoke');
+    }
+    if (window.gtag) {
+      var state = c.marketing ? 'granted' : 'denied';
+      gtag('consent', 'update', {
+        ad_storage: state,
+        ad_user_data: state,
+        ad_personalization: state,
+        analytics_storage: state
+      });
     }
   }
 
