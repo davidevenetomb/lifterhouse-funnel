@@ -207,4 +207,51 @@
     var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
     return m ? m.pop() : '';
   };
+
+  // ---------- Attribution: UTM + click IDs ----------
+  // Cattura utm_* e fbclid/gclid/ttclid/msclkid dall'URL di atterraggio e li
+  // persiste in localStorage per 30 giorni (last-touch attribution).
+  var ATTR_KEY = 'lh_attribution';
+  var ATTR_TTL_MS = 30 * 24 * 3600 * 1000;
+  var ATTR_PARAMS = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','fbclid','gclid','ttclid','msclkid'];
+
+  function readAttribution() {
+    try {
+      var raw = localStorage.getItem(ATTR_KEY);
+      if (!raw) return null;
+      var obj = JSON.parse(raw);
+      if (obj && obj.ts && (Date.now() - obj.ts) > ATTR_TTL_MS) {
+        localStorage.removeItem(ATTR_KEY);
+        return null;
+      }
+      return obj;
+    } catch (e) { return null; }
+  }
+
+  function getUrlParam(name) {
+    var m = window.location.search.match(new RegExp('[?&]' + name + '=([^&]+)'));
+    return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : '';
+  }
+
+  (function captureAttribution() {
+    var found = {};
+    var has = false;
+    for (var i = 0; i < ATTR_PARAMS.length; i++) {
+      var v = getUrlParam(ATTR_PARAMS[i]);
+      if (v) { found[ATTR_PARAMS[i]] = v; has = true; }
+    }
+    if (!has) return;
+    found.landing_url = window.location.href;
+    found.referrer = document.referrer || '';
+    found.ts = Date.now();
+    try { localStorage.setItem(ATTR_KEY, JSON.stringify(found)); } catch (e) {}
+  })();
+
+  window.lhGetAttribution = function () {
+    var a = readAttribution();
+    if (!a) return {};
+    var out = {};
+    for (var k in a) { if (a.hasOwnProperty(k) && k !== 'ts') out[k] = a[k]; }
+    return out;
+  };
 })();

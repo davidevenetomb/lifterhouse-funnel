@@ -941,6 +941,7 @@
           var eventId = (window.lhGenEventId ? window.lhGenEventId() : 'lead_' + Date.now());
           var fbp = (window.lhGetCookie ? window.lhGetCookie('_fbp') : '');
           var fbc = (window.lhGetCookie ? window.lhGetCookie('_fbc') : '');
+          var attribution = (window.lhGetAttribution ? window.lhGetAttribution() : {});
 
           // Pixel: evento Lead lato browser
           if (window.fbq) {
@@ -964,7 +965,19 @@
             event_source_url: window.location.href,
             user_agent: navigator.userAgent,
             fbp: fbp,
-            fbc: fbc
+            fbc: fbc,
+            // attribuzione (UTM + click IDs) — vuoti se atterraggio diretto
+            utm_source: attribution.utm_source || '',
+            utm_medium: attribution.utm_medium || '',
+            utm_campaign: attribution.utm_campaign || '',
+            utm_term: attribution.utm_term || '',
+            utm_content: attribution.utm_content || '',
+            fbclid: attribution.fbclid || '',
+            gclid: attribution.gclid || '',
+            ttclid: attribution.ttclid || '',
+            msclkid: attribution.msclkid || '',
+            landing_url: attribution.landing_url || '',
+            referrer: attribution.referrer || ''
           };
 
           function done() {
