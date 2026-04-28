@@ -99,7 +99,7 @@
     }
     .vsl-hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 0.75rem;
@@ -593,12 +593,6 @@
 </head>
 <body>
 
-  <div class="topbar">Video esclusivo</div>
-
-  <div class="logo-bar">
-    <img src="LifterHouse_Business_bianco_RGB_trasparente.png" alt="Lifter House Business" style="max-height:60px;width:auto;display:inline-block;">
-  </div>
-
   <!-- Hero -->
   <section class="vsl-hero">
     <h1>I 4 numeri che nessuno ti ha mai mostrato.<br>E che decidono il tuo fatturato.</h1>
@@ -617,6 +611,12 @@
       <style>wistia-player[media-id='u0qsvc3os2']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/u0qsvc3os2/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
       <wistia-player media-id="u0qsvc3os2" aspect="1.7777777777777777"></wistia-player>
     </div>
+  </div>
+
+  <div style="text-align:center; padding: 1.5rem 1rem 0.5rem;">
+    <button class="btn-start-quiz" onclick="document.getElementById('quiz-section').scrollIntoView({behavior:'smooth'})">
+      Richiedi il tuo Business Checkup →
+    </button>
   </div>
 
   <!-- ── QUIZ SECTION (embedded) ── -->
