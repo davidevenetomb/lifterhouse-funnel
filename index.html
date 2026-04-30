@@ -11,31 +11,7 @@
   <!-- Lifter House: Consent + Meta Pixel -->
   <script src="lifter-consent.js"></script>
 
-  <!-- A/B Test: headline_v1 -->
-  <script>
-    (function() {
-      var stored = localStorage.getItem('ab_headline_v1');
-      var variant = stored || (Math.random() < 0.5 ? 'A' : 'B');
-      if (!stored) localStorage.setItem('ab_headline_v1', variant);
-      window.AB_VARIANT = variant;
 
-      if (variant === 'B') {
-        document.addEventListener('DOMContentLoaded', function() {
-          var h1 = document.querySelector('.hero h1');
-          if (h1) h1.innerHTML = 'Da lavoro precario a <span class="highlight">business stabile</span>:<br>ecco i 4 numeri che controllano la tua attività.';
-        });
-      }
-
-      window.addEventListener('load', function() {
-        if (window.gtag) {
-          gtag('event', 'ab_variant_assigned', {
-            ab_test: 'headline_v1',
-            ab_variant: variant
-          });
-        }
-      });
-    })();
-  </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1373183478187151&ev=PageView&noscript=1" alt=""/></noscript>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -968,14 +944,6 @@
           var fbp = (window.lhGetCookie ? window.lhGetCookie('_fbp') : '');
           var fbc = (window.lhGetCookie ? window.lhGetCookie('_fbc') : '');
           var attribution = (window.lhGetAttribution ? window.lhGetAttribution() : {});
-
-          // A/B: traccia conversione con variante
-          if (window.gtag) {
-            gtag('event', 'ab_conversion', {
-              ab_test: 'headline_v1',
-              ab_variant: window.AB_VARIANT || 'A'
-            });
-          }
 
           // Pixel: evento Lead lato browser
           if (window.fbq) {
