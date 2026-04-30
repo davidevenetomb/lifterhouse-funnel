@@ -351,148 +351,6 @@
     }
     .discover-text strong { color: var(--text); font-weight: 600; }
 
-    /* ── Testimonials ── */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
-    .testimonial-card {
-      background: var(--surface);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px;
-      padding: 1.5rem;
-    }
-    .testimonial-stars {
-      color: var(--accent);
-      font-size: 0.85rem;
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.1em;
-    }
-    .testimonial-text {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 1rem;
-      font-style: italic;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-    .testimonial-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--surface2);
-      border: 1px solid rgba(29,127,212,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-    .testimonial-name {
-      font-size: 0.82rem;
-      font-weight: 700;
-      font-family: 'Poppins', sans-serif;
-    }
-    .testimonial-role {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    /* ── Testimonials Videos ── */
-    .testimonials-section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-      text-align: center;
-    }
-    .testimonials-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-      line-height: 1.25;
-    }
-    .testimonials-sub {
-      font-family: var(--font-body);
-      font-size: var(--t-base);
-      color: var(--text-sub);
-      margin-bottom: 2rem;
-    }
-    .videos-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-      margin-bottom: 2.5rem;
-    }
-    .video-item { text-align: left; }
-    .video-item--last {
-      grid-column: 1 / -1;
-      max-width: calc(50% - 0.625rem);
-      margin: 0 auto;
-    }
-    .video-embed {
-      position: relative;
-      padding-bottom: 56.25%;
-      border-radius: 10px;
-      overflow: hidden;
-      background: var(--surface);
-      border: 1px solid var(--border);
-    }
-    .video-embed iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
-    }
-    .video-thumb { cursor: pointer; }
-    .video-thumb img {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
-    .play-btn {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60px; height: 60px;
-      border-radius: 50%;
-      background: rgba(169,7,7,0.9);
-      border: none; color: #fff;
-      font-size: 1.4rem;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s, transform 0.2s;
-      padding-left: 4px;
-    }
-    .video-thumb:hover .play-btn {
-      background: var(--accent);
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-    .video-name {
-      font-family: var(--font-body);
-      font-size: var(--t-sm);
-      color: var(--muted);
-      margin-top: 0.5rem;
-      text-align: center;
-      font-weight: 500;
-    }
-    .video-job {
-      font-family: var(--font-body);
-      font-size: 0.875rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
-      text-align: center;
-      font-weight: 400;
-    }
     .btn-to-form {
       display: inline-block;
       padding: 1rem 2.75rem;
@@ -713,9 +571,7 @@
       .video-frame { padding-bottom: 44%; }
       .form-section { padding: 1rem 1rem 2.5rem; }
       .form-card { padding: 1.5rem 1.25rem; }
-      .videos-grid { grid-template-columns: 1fr; }
-      .video-item--last { grid-column: auto; max-width: 100%; margin: 0; }
-      .testimonials-section { padding: 2rem 1rem; }
+
     }
   </style>
 </head>
@@ -835,50 +691,6 @@
       </div>
     </div>
     <div style="text-align:center; margin-top:2rem;"><a href="#form" class="btn-to-form">Voglio scoprire i 4 numeri →</a></div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials-section">
-    <p class="form-eyebrow">Risultati reali</p>
-    <h2 class="testimonials-title">Cosa dicono i trainer che hanno già visto il video</h2>
-    <p class="testimonials-sub">Persone normali, che lavoravano come te — e che hanno cambiato qualcosa.</p>
-    <div class="videos-grid">
-      <div class="video-item">
-        <div class="video-embed video-thumb" data-ytid="lWbSKa35wNk">
-          <img src="https://i.ytimg.com/vi/lWbSKa35wNk/hqdefault.jpg" alt="Testimonianza Andrea Buttà" loading="lazy">
-          <button class="play-btn" aria-label="Riproduci video">&#9654;</button>
-        </div>
-        <p class="video-name">Andrea Buttà</p>
-        <p class="video-job">Calisthenics e Streetlifting</p>
-      </div>
-      <div class="video-item">
-        <div class="video-embed video-thumb" data-ytid="-uue1dVg-qw">
-          <img src="https://i.ytimg.com/vi/-uue1dVg-qw/hqdefault.jpg" alt="Testimonianza Mirko Nutricato" loading="lazy">
-          <button class="play-btn" aria-label="Riproduci video">&#9654;</button>
-        </div>
-        <p class="video-name">Mirko Nutricato</p>
-        <p class="video-job">Powerlifting e Streetlifting a livello agonistico</p>
-      </div>
-      <div class="video-item">
-        <div class="video-embed video-thumb" data-ytid="GgCsfNa7OwQ">
-          <img src="https://i.ytimg.com/vi/GgCsfNa7OwQ/hqdefault.jpg" alt="Testimonianza Alessio Miravalle" loading="lazy">
-          <button class="play-btn" aria-label="Riproduci video">&#9654;</button>
-        </div>
-        <p class="video-name">Alessio Miravalle</p>
-        <p class="video-job">PT, Powerlifting e Natural Bodybuilding</p>
-      </div>
-      <div class="video-item">
-        <div class="video-embed video-thumb" data-ytid="ZkyjKpJQx2s">
-          <img src="https://i.ytimg.com/vi/ZkyjKpJQx2s/hqdefault.jpg" alt="Testimonianza Davide Feltrin" loading="lazy">
-          <button class="play-btn" aria-label="Riproduci video">&#9654;</button>
-        </div>
-        <p class="video-name">Davide Feltrin</p>
-        <p class="video-job">Coach di Calisthenics Skills</p>
-      </div>
-    </div>
-    <div style="text-align:center;"><a href="#form" class="btn-to-form">Voglio scoprire i 4 numeri →</a></div>
   </section>
 
   <div class="divider"></div>
@@ -1022,20 +834,5 @@
     </p>
   </footer>
 
-  <script>
-    document.querySelectorAll('.video-thumb').forEach(function(el) {
-      el.addEventListener('click', function() {
-        var id = el.dataset.ytid;
-        var iframe = document.createElement('iframe');
-        iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
-        iframe.allow = 'autoplay; encrypted-media';
-        iframe.allowFullscreen = true;
-        iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
-        el.innerHTML = '';
-        el.appendChild(iframe);
-        el.classList.remove('video-thumb');
-      });
-    });
-  </script>
 </body>
 </html>
