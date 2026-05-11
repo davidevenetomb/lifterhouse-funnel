@@ -143,55 +143,6 @@
       letter-spacing: 0;
     }
 
-    /* ── Video Frame ── */
-    .video-frame-wrap {
-      max-width: 760px;
-      margin: 2rem auto 0;
-      padding: 0 1.5rem;
-    }
-    .video-frame {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      background: var(--surface);
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(29,127,212,0.2);
-      box-shadow: 0 0 60px rgba(29,127,212,0.07);
-    }
-    .video-frame video,
-    .video-frame iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
-    }
-    .video-placeholder {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      color: var(--muted);
-      background: var(--surface);
-    }
-    .play-circle {
-      width: 72px; height: 72px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 40px rgba(29,127,212,0.4);
-      font-size: 1.5rem;
-      padding-left: 4px;
-    }
-    .video-placeholder p { font-size: 0.85rem; }
-    .video-placeholder small { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
-
     /* ── CTA ── */
     .cta-wrap {
       text-align: center;
@@ -577,9 +528,7 @@
       .cta-wrap { padding: 1.25rem 1rem; }
       .btn-cta { display: block; width: 100%; text-align: center; padding: 1rem 1.5rem; }
       .btn-to-form { display: block; width: 100%; text-align: center; }
-      .video-frame-wrap { padding: 0 1rem; }
-      .video-frame { padding-bottom: 44%; }
-      .form-section { padding: 1rem 1rem 2.5rem; }
+.form-section { padding: 1rem 1rem 2.5rem; }
       .form-card { padding: 1.5rem 1.25rem; }
     }
   </style>
@@ -589,35 +538,9 @@
   <!-- Hero -->
   <section class="hero">
     <p class="hero-pre">Solo per PT che vogliono lavorare bene. Senza schede prefatte.</p>
-    <h1>Come passare da <span class="highlight">"non so quanto guadagno questo mese"</span> a entrate stabili. Senza post su Instagram, senza schede precompilate, senza scendere a compromessi sulla qualità.</h1>
-    <p class="hero-sub">Questo video gratuito ti mostra i <strong>4 numeri</strong> che i PT che guadagnano bene controllano ogni mese, e come usarli per stabilizzare le tue entrate senza cambiare il modo in cui lavori.</p>
+    <h1>Come passare da <span class="highlight">"non so quanto guadagno questo mese"</span> a <span class="highlight">entrate stabili.</span><br>Senza post su Instagram, senza schede precompilate, senza scendere a compromessi sulla qualità.</h1>
+    <p class="hero-sub">Questo video gratuito ti mostra i <strong>4 numeri</strong> che i PT che guadagnano bene controllano ogni mese, e come usarli per stabilizzare le tue entrate <strong>senza cambiare il modo in cui lavori.</strong></p>
   </section>
-
-  <!-- Video Frame teaser -->
-  <div class="video-frame-wrap">
-    <div class="video-frame">
-      <!--
-        ══════════════════════════════════════════════════════════
-        EMBED VIDEO TEASER — Sostituisci con il tuo player:
-
-        ① Wistia:
-           <script src="https://fast.wistia.com/embed/medias/ID.jsonp" async></script>
-           <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
-           <div class="wistia_embed wistia_async_ID" style="height:100%;width:100%">&nbsp;</div>
-
-        ② Vimeo:
-           <iframe src="https://player.vimeo.com/video/ID?autoplay=1&muted=1"
-                   allow="autoplay; fullscreen" allowfullscreen></iframe>
-
-        ③ MP4 locale:
-           <video src="teaser.mp4" poster="thumb.jpg" autoplay muted playsinline controls></video>
-        ══════════════════════════════════════════════════════════
-      -->
-      <div class="video-placeholder">
-        <img src="thumb.jpeg" alt="Anteprima video" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;display:block;">
-      </div>
-    </div>
-  </div>
 
   <!-- CTA #1 -->
   <div class="cta-wrap">
