@@ -109,9 +109,19 @@
       letter-spacing: -0.02em;
     }
     .hero h1 .highlight { color: var(--accent); }
+    .hero-pre {
+      font-family: var(--font-body);
+      font-size: var(--t-sm);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
     .hero-sub {
       font-family: var(--font-body);
       font-size: var(--t-lg);
+      font-weight: 600;
       color: var(--text-sub);
       line-height: 1.7;
       max-width: 680px;
@@ -575,15 +585,11 @@
 </head>
 <body>
 
-  <!-- Logo -->
-  <div class="logo-bar">
-    <img src="LifterHouse_Business_bianco_RGB_trasparente.png" alt="Lifter House Business" style="max-height:40px;width:auto;display:inline-block;">
-  </div>
-
   <!-- Hero -->
   <section class="hero">
-    <h1>Stabilizza e controlla il fatturato del tuo <span class="highlight">business da PT</span></h1>
-    <p class="hero-sub">Accedi al video training che ti spiega come alcuni allenatori riescono ad ottenere un fatturato alto, stabile e prevedibile senza fare post sui social, diventare influencer o vendere schede scadenti — utilizzando i <strong>QUATTRO numeri</strong> più importanti della finanza aziendale.</p>
+    <p class="hero-pre">Solo per PT che vogliono lavorare bene — senza schede prefatte.</p>
+    <h1>Come passare da <span class="highlight">"non so quanto guadagno questo mese"</span> a entrate stabili — senza post su Instagram, senza schede precompilate, senza scendere a compromessi sulla qualità.</h1>
+    <p class="hero-sub">Questo video gratuito ti mostra i <strong>4 numeri</strong> che i PT che guadagnano bene controllano ogni mese — e come usarli per stabilizzare le tue entrate senza cambiare il modo in cui lavori.</p>
   </section>
 
   <!-- Video Frame teaser -->
@@ -614,15 +620,15 @@
 
   <!-- CTA #1 -->
   <div class="cta-wrap">
-    <a href="#form" class="btn-cta">Sblocca il video e controlla il tuo fatturato</a>
+    <a href="#form" class="btn-cta">SBLOCCA IL TRAINING GRATUITO</a>
   </div>
 
   <div class="divider"></div>
 
   <!-- CHI È GABRIELE -->
   <section class="section">
-    <p class="section-label">Chi siamo</p>
-    <h2>Due persone che hanno vissuto il mondo del fitness da ogni ruolo possibile — da trainer in sala a direttore di centro.</h2>
+    <p class="section-label">Chi sono</p>
+    <h2>Ecco perchè ho registrato questo training</h2>
 
     <div class="authority-card">
       <div class="authority-photo" style="padding:0;overflow:hidden;"><img src="propic%20gabri.png" alt="Gabriele Lombardo" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
@@ -636,17 +642,6 @@
       </div>
     </div>
 
-    <div class="authority-card" style="margin-top:1.25rem;">
-      <div class="authority-photo" style="padding:0;overflow:hidden;"><img src="circle-jack.png" alt="Giacomo Melotti" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="authority-text">
-        <p class="name">Giacomo Melotti</p>
-        <p class="title">Coach & Fondatore Lifter House</p>
-        <p>
-          Ha aperto Lifter House da zero — niente ads, niente funnel, niente personal brand.
-          Solo il controllo preciso dei numeri giusti. È passato dall'allenare in palestra ad avere un centro suo.
-        </p>
-      </div>
-    </div>
   </section>
 
   <div class="divider"></div>
@@ -672,11 +667,11 @@
       <div class="discover-item">
         <div class="discover-num">3</div>
         <p class="discover-text">
-          Come costruire un <strong>fatturato prevedibile</strong> lavorando offline, senza social e senza funnel
+          Come costruire un <strong>fatturato prevedibile</strong> senza vendere schede copia incolla, senza social e senza fare post
         </p>
       </div>
     </div>
-    <div style="text-align:center; margin-top:2rem;"><a href="#form" class="btn-to-form">Sblocca il video e controlla il tuo fatturato</a></div>
+    <div style="text-align:center; margin-top:2rem;"><a href="#form" class="btn-to-form">SBLOCCA IL TRAINING GRATUITO</a></div>
   </section>
 
   <div class="divider"></div>
@@ -715,7 +710,7 @@
         </label>
         <p class="consent-error" id="f-consent-error">Devi accettare la Privacy Policy per continuare.</p>
 
-        <button type="submit" id="optin-btn">Sblocca il video e controlla il tuo fatturato</button>
+        <button type="submit" id="optin-btn">SBLOCCA IL TRAINING GRATUITO</button>
       </form>
       <script>
         document.getElementById('optin-form').addEventListener('submit', function(e) {
