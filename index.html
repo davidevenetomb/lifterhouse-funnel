@@ -526,6 +526,12 @@
       color: rgba(255,255,255,0.48);
     }
 
+    /* ── Color stripes ── */
+    .stripe { width: 100%; }
+    .stripe-dark { background: var(--bg); }
+    .stripe-mid  { background: var(--surface); }
+    .stripe-lift { background: var(--surface2); }
+
     /* ── Responsive ── */
     @media (max-width: 640px) {
       .hero { padding: 2.5rem 1rem 1rem; }
@@ -543,25 +549,25 @@
 </head>
 <body>
 
-  <!-- Hero -->
-  <section class="hero">
-    <p class="hero-pre">Solo per PT che vogliono lavorare bene. Senza schede prefatte.</p>
-    <h1>Come passare da <span class="highlight">"non so quanto guadagno questo mese"</span> a <span class="highlight">entrate stabili.</span></h1>
-    <ul class="no-list">
-      <li class="no-item">Senza post su Instagram</li>
-      <li class="no-item">Senza schede precompilate</li>
-      <li class="no-item">Senza scendere a compromessi sulla qualità</li>
-    </ul>
-    <p class="hero-sub">Questo video gratuito ti mostra i <strong>4 numeri</strong> che i PT che guadagnano bene controllano ogni mese, e come usarli per stabilizzare le tue entrate <strong>senza cambiare il modo in cui lavori.</strong></p>
-  </section>
-
-  <!-- CTA #1 -->
-  <div class="cta-wrap">
-    <a href="#form" class="btn-cta">SBLOCCA IL TRAINING GRATUITO</a>
+  <div class="stripe stripe-dark">
+    <!-- Hero -->
+    <section class="hero">
+      <p class="hero-pre">Solo per PT che vogliono lavorare bene. Senza schede prefatte.</p>
+      <h1>Come passare da <span class="highlight">"non so quanto guadagno questo mese"</span> a <span class="highlight">entrate stabili.</span></h1>
+      <ul class="no-list">
+        <li class="no-item">Senza post su Instagram</li>
+        <li class="no-item">Senza schede precompilate</li>
+        <li class="no-item">Senza scendere a compromessi sulla qualità</li>
+      </ul>
+      <p class="hero-sub">Questo video gratuito ti mostra i <strong>4 numeri</strong> che i PT che guadagnano bene controllano ogni mese, e come usarli per stabilizzare le tue entrate <strong>senza cambiare il modo in cui lavori.</strong></p>
+    </section>
+    <!-- CTA #1 -->
+    <div class="cta-wrap">
+      <a href="#form2" class="btn-cta">SBLOCCA IL TRAINING GRATUITO</a>
+    </div>
   </div>
 
-  <div class="divider"></div>
-
+  <div class="stripe stripe-lift">
   <!-- FORM OPT-IN (copia) -->
   <section class="form-section" id="form2">
     <p class="form-eyebrow">Accesso gratuito</p>
@@ -635,9 +641,9 @@
       <p class="privacy-note">🔒 Puoi cancellarti in qualsiasi momento.</p>
     </div>
   </section>
+  </div>
 
-  <div class="divider"></div>
-
+  <div class="stripe stripe-mid">
   <!-- CHI È GABRIELE -->
   <section class="section">
     <p class="section-label">Chi sono</p>
@@ -656,9 +662,9 @@
     </div>
 
   </section>
+  </div>
 
-  <div class="divider"></div>
-
+  <div class="stripe stripe-lift">
   <!-- COSA SCOPRIRAI -->
   <section class="section">
     <p class="section-label">Cosa Scoprirai</p>
@@ -685,9 +691,9 @@
       </div>
     </div>
   </section>
+  </div>
 
-  <div class="divider"></div>
-
+  <div class="stripe stripe-dark">
   <!-- FORM OPT-IN -->
   <section class="form-section" id="form">
     <p class="form-eyebrow">Accesso gratuito</p>
@@ -812,6 +818,7 @@
       <p class="privacy-note">🔒 Puoi cancellarti in qualsiasi momento.</p>
     </div>
   </section>
+  </div>
 
   <!-- Footer -->
   <footer>
