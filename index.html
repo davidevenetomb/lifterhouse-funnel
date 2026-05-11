@@ -141,6 +141,14 @@
       color: var(--text-sub);
       font-weight: 400;
       letter-spacing: 0;
+      list-style: none;
+    }
+    .no-item::before {
+      content: '✕ ';
+      color: var(--accent);
+      font-size: 0.8em;
+      font-weight: 700;
+      margin-right: 0.25rem;
     }
 
     /* ── CTA ── */
@@ -538,7 +546,12 @@
   <!-- Hero -->
   <section class="hero">
     <p class="hero-pre">Solo per PT che vogliono lavorare bene. Senza schede prefatte.</p>
-    <h1>Come passare da <span class="highlight">"non so quanto guadagno questo mese"</span> a <span class="highlight">entrate stabili.</span><br>Senza post su Instagram, senza schede precompilate, senza scendere a compromessi sulla qualità.</h1>
+    <h1>Come passare da <span class="highlight">"non so quanto guadagno questo mese"</span> a <span class="highlight">entrate stabili.</span></h1>
+    <ul class="no-list">
+      <li class="no-item">Senza post su Instagram</li>
+      <li class="no-item">Senza schede precompilate</li>
+      <li class="no-item">Senza scendere a compromessi sulla qualità</li>
+    </ul>
     <p class="hero-sub">Questo video gratuito ti mostra i <strong>4 numeri</strong> che i PT che guadagnano bene controllano ogni mese, e come usarli per stabilizzare le tue entrate <strong>senza cambiare il modo in cui lavori.</strong></p>
   </section>
 
@@ -595,7 +608,82 @@
         </p>
       </div>
     </div>
-    <div style="text-align:center; margin-top:2rem;"><a href="#form" class="btn-to-form">SBLOCCA IL TRAINING GRATUITO</a></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FORM OPT-IN (copia — seconda sezione) -->
+  <section class="form-section" id="form2">
+    <p class="form-eyebrow">Accesso gratuito</p>
+    <h2>Accedi al video e scopri i 4 numeri che controllano il business di ogni PT</h2>
+    <p class="form-sub">Inserisci i tuoi dati per ricevere il link istantaneamente.</p>
+    <div class="form-card">
+      <form class="optin-form" id="optin-form-2">
+        <div class="field-group">
+          <label for="f2-nome">Il tuo nome</label>
+          <input type="text" id="f2-nome" name="nome" placeholder="es. Marco" required>
+        </div>
+        <div class="field-group">
+          <label for="f2-email">La tua email</label>
+          <input type="email" id="f2-email" name="email" placeholder="es. marco@gmail.com" required>
+        </div>
+        <div class="field-group">
+          <label for="f2-tel">Il tuo telefono</label>
+          <input type="tel" id="f2-tel" name="telefono" placeholder="es. 333 1234567" required>
+        </div>
+        <label class="consent-item">
+          <input type="checkbox" id="f2-consent-privacy" required>
+          <span>Ho letto e accetto la <a href="privacy-policy.html" target="_blank">Privacy Policy</a> e acconsento al trattamento dei miei dati per essere ricontattato. *</span>
+        </label>
+        <p class="consent-error" id="f2-consent-error">Devi accettare la Privacy Policy per continuare.</p>
+        <button type="submit" id="optin-btn-2">SBLOCCA IL TRAINING GRATUITO</button>
+      </form>
+      <script>
+        document.getElementById('optin-form-2').addEventListener('submit', function(e) {
+          e.preventDefault();
+          var consentPrivacy = document.getElementById('f2-consent-privacy').checked;
+          var consentErr = document.getElementById('f2-consent-error');
+          if (!consentPrivacy) { consentErr.classList.add('show'); return; }
+          consentErr.classList.remove('show');
+          var btn = document.getElementById('optin-btn-2');
+          btn.disabled = true;
+          btn.textContent = 'Caricamento...';
+          var nome = document.getElementById('f2-nome').value;
+          var email = document.getElementById('f2-email').value;
+          var telefono = document.getElementById('f2-tel').value;
+          var eventId = (window.lhGenEventId ? window.lhGenEventId() : 'lead_' + Date.now());
+          var fbp = (window.lhGetCookie ? window.lhGetCookie('_fbp') : '');
+          var fbc = (window.lhGetCookie ? window.lhGetCookie('_fbc') : '');
+          var attribution = (window.lhGetAttribution ? window.lhGetAttribution() : {});
+          if (window.fbq) { try { fbq('track', 'Lead', { content_name: 'Opt-in 4 Numeri', content_category: 'Lead Magnet' }, { eventID: eventId }); } catch(err) {} }
+          var payload = {
+            nome: nome, email: email, telefono: telefono,
+            consent_privacy: true, consent_ts: new Date().toISOString(),
+            event_id: eventId, event_name: 'Lead',
+            event_source_url: window.location.href, user_agent: navigator.userAgent,
+            fbp: fbp, fbc: fbc,
+            utm_source: attribution.utm_source || '', utm_medium: attribution.utm_medium || '',
+            utm_campaign: attribution.utm_campaign || '', utm_term: attribution.utm_term || '',
+            utm_content: attribution.utm_content || '', fbclid: attribution.fbclid || '',
+            gclid: attribution.gclid || '', ttclid: attribution.ttclid || '',
+            msclkid: attribution.msclkid || '', landing_url: attribution.landing_url || '',
+            referrer: attribution.referrer || ''
+          };
+          function done2() {
+            sessionStorage.setItem('lh_nome', nome);
+            sessionStorage.setItem('lh_email', email);
+            sessionStorage.setItem('lh_telefono', telefono);
+            window.location.href = 'vsl.html';
+          }
+          var hookCrm  = 'https://hook.eu2.make.com/3l0r8xpqkx5e6vvd87mtvmsnmgsmekqq';
+          var hookCapi = 'https://hook.eu2.make.com/k63dub91q9tkc2m4ae2o2ns4wbzvn4ya';
+          var opts = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) };
+          try { fetch(hookCapi, opts); } catch(err) {}
+          fetch(hookCrm, opts).then(done2).catch(done2);
+        });
+      </script>
+      <p class="privacy-note">🔒 Puoi cancellarti in qualsiasi momento.</p>
+    </div>
   </section>
 
   <div class="divider"></div>
